@@ -25,14 +25,12 @@
             --button-hover: #4a4a4a;
             --button-active: #5a5a5a;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
         }
-
         body {
             background: var(--bg-dark);
             color: var(--text);
@@ -42,7 +40,6 @@
             overflow: hidden;
             position: relative;
         }
-
         /* Intro Animation Styles */
         .intro-screen {
             position: fixed;
@@ -58,7 +55,6 @@
             z-index: 1001;
             overflow: hidden;
         }
-
         .intro-logo {
             font-family: 'Bangers', cursive;
             font-size: 5em;
@@ -71,25 +67,21 @@
             margin-bottom: 20px;
             position: relative;
         }
-
         @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
-
         .intro-subtitle {
             font-size: 1.5em;
             color: #aaa;
             margin-bottom: 40px;
             text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
         }
-
         .loading-bar {
             width: 300px;
             height: 10px;
@@ -98,19 +90,16 @@
             overflow: hidden;
             margin-bottom: 20px;
         }
-
         .loading-progress {
             height: 100%;
             background: linear-gradient(90deg, #00aaff, #ff00aa);
             width: 0%;
             transition: width 0.3s ease;
         }
-
         .loading-text {
             color: #aaa;
             font-size: 1em;
         }
-
         .particle-container {
             position: absolute;
             top: 0;
@@ -119,14 +108,12 @@
             height: 100%;
             pointer-events: none;
         }
-
         .particle {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
         }
-
         /* Menu Screen Styles */
         .menu-screen {
             position: fixed;
@@ -143,11 +130,9 @@
             transition: opacity 0.5s ease;
             opacity: 0;
         }
-
         .menu-screen.active {
             opacity: 1;
         }
-
         .menu-screen h1 {
             color: var(--accent);
             font-size: 3.5em;
@@ -155,14 +140,12 @@
             text-shadow: 0 0 15px var(--accent);
             font-family: 'Bangers', cursive;
         }
-
         .menu-buttons {
             display: flex;
             flex-direction: column;
             gap: 20px;
             width: 250px;
         }
-
         .menu-button {
             background: linear-gradient(135deg, var(--button), var(--button-hover));
             color: var(--text-light);
@@ -178,17 +161,14 @@
             position: relative;
             overflow: hidden;
         }
-
         .menu-button:hover {
             background: linear-gradient(135deg, var(--button-hover), var(--button-active));
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
         }
-
         .menu-button:active {
             transform: translateY(0);
         }
-
         .menu-button::after {
             content: '';
             position: absolute;
@@ -200,11 +180,9 @@
             transform: translateX(-100%) skewX(-15deg);
             transition: transform 0.5s ease;
         }
-
         .menu-button:hover::after {
             transform: translateX(100%) skewX(-15deg);
         }
-
         /* Play Menu Styles */
         .play-menu {
             position: fixed;
@@ -219,12 +197,10 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-
         .play-menu.active {
             display: flex;
             opacity: 1;
         }
-
         .desktop-icons {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -233,7 +209,6 @@
             flex: 1;
             overflow-y: auto;
         }
-
         .game-icon {
             display: flex;
             flex-direction: column;
@@ -243,12 +218,10 @@
             padding: 10px;
             border-radius: 5px;
         }
-
         .game-icon:hover {
             background-color: rgba(255, 255, 255, 0.1);
             transform: scale(1.05);
         }
-
         .game-icon img {
             width: 80px;
             height: 80px;
@@ -257,11 +230,9 @@
             margin-bottom: 8px;
             transition: transform 0.3s ease;
         }
-
         .game-icon:hover img {
             transform: scale(1.1);
         }
-
         .game-icon span {
             color: var(--text);
             text-align: center;
@@ -271,7 +242,6 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-
         .taskbar {
             background-color: var(--taskbar);
             padding: 8px 15px;
@@ -282,12 +252,10 @@
             position: relative;
             z-index: 1000;
         }
-
         .search-bar {
             flex: 1;
             margin-right: 20px;
         }
-
         .search-bar input {
             width: 100%;
             padding: 8px 12px;
@@ -298,18 +266,15 @@
             outline: none;
             transition: all 0.3s ease;
         }
-
         .search-bar input:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.2);
         }
-
         .open-windows {
             display: flex;
             gap: 5px;
             margin-right: 20px;
         }
-
         .open-window {
             background-color: var(--window-bg);
             color: var(--text);
@@ -322,22 +287,18 @@
             align-items: center;
             gap: 5px;
         }
-
         .open-window:hover {
             background-color: var(--window-header);
         }
-
         .open-window.active {
             background-color: var(--accent);
             color: #000;
         }
-
         .open-window-icon {
             width: 16px;
             height: 16px;
             object-fit: cover;
         }
-
         .start-button {
             background-color: var(--window-bg);
             color: var(--text);
@@ -350,11 +311,9 @@
             gap: 5px;
             transition: background-color 0.2s ease;
         }
-
         .start-button:hover {
             background-color: var(--window-header);
         }
-
         /* Game Window Styles */
         .game-window {
             position: absolute;
@@ -369,7 +328,6 @@
             overflow: hidden;
             z-index: 100;
         }
-
         .window-header {
             background-color: var(--window-header);
             color: var(--text);
@@ -380,7 +338,6 @@
             border-bottom: 1px solid var(--border);
             user-select: none;
         }
-
         .window-title {
             font-weight: bold;
             font-size: 0.9em;
@@ -388,18 +345,15 @@
             align-items: center;
             gap: 8px;
         }
-
         .window-title-icon {
             width: 16px;
             height: 16px;
             object-fit: cover;
         }
-
         .window-buttons {
             display: flex;
             gap: 5px;
         }
-
         .window-button {
             width: 16px;
             height: 16px;
@@ -412,42 +366,33 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-
         .minimize-button {
             background-color: #ffcc00;
         }
-
         .minimize-button:hover {
             background-color: #e6b800;
         }
-
         .maximize-button {
             background-color: #00cc33;
         }
-
         .maximize-button:hover {
             background-color: #00b32d;
         }
-
         .close-button {
             background-color: #ff3333;
         }
-
         .close-button:hover {
             background-color: #e62e2e;
         }
-
         .window-content {
             flex: 1;
             position: relative;
         }
-
         .window-content iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-
         /* Start Menu Styles */
         .start-menu {
             position: absolute;
@@ -461,7 +406,6 @@
             display: none;
             z-index: 1001;
         }
-
         .start-menu-header {
             background-color: var(--window-header);
             color: var(--text);
@@ -470,14 +414,12 @@
             font-size: 0.9em;
             border-bottom: 1px solid var(--border);
         }
-
         .start-menu-content {
             padding: 10px;
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
-
         .start-menu-button {
             background-color: var(--button);
             color: var(--text);
@@ -492,17 +434,14 @@
             align-items: center;
             gap: 8px;
         }
-
         .start-menu-button:hover {
             background-color: var(--button-hover);
         }
-
         .start-menu-icon {
             width: 16px;
             height: 16px;
             object-fit: cover;
         }
-
         /* Settings and Credits Styles */
         .settings-menu, .credits-menu {
             position: fixed;
@@ -520,7 +459,6 @@
             z-index: 1002;
             overflow: hidden;
         }
-
         .settings-header, .credits-header {
             background-color: var(--window-header);
             color: var(--text);
@@ -532,13 +470,11 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .settings-content, .credits-content {
             padding: 20px;
             overflow-y: auto;
             flex: 1;
         }
-
         .close-settings, .close-credits {
             background-color: var(--button);
             color: var(--text);
@@ -549,11 +485,9 @@
             font-size: 0.9em;
             transition: background-color 0.2s ease;
         }
-
         .close-settings:hover, .close-credits:hover {
             background-color: var(--button-hover);
         }
-
         /* Particle Animation */
         .particle {
             position: absolute;
@@ -563,24 +497,26 @@
             pointer-events: none;
             z-index: 1000;
         }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes slideIn {
             from { opacity: 0; transform: translateX(-20px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
         }
-
         .slide-in {
             animation: slideIn 0.5s ease forwards;
+        }
+        /* Minecraft Text Style */
+        .minecraft-text {
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-family: 'Minecraft', sans-serif;
         }
     </style>
 </head>
@@ -589,23 +525,21 @@
     <div id="intro-screen" class="intro-screen">
         <div class="particle-container" id="particle-container"></div>
         <h1 class="intro-logo">THE GOON LAGOON</h1>
-        <h2 class="intro-subtitle">Loading the ultimate gaming experience...</h2>
+        <h2 class="intro-subtitle minecraft-text" id="loading-message">Loading the ultimate gaming experience...</h2>
         <div class="loading-bar">
             <div class="loading-progress" id="loading-progress"></div>
         </div>
         <div class="loading-text" id="loading-text">Initializing systems...</div>
     </div>
-
     <!-- Menu Screen -->
     <div id="menu-screen" class="menu-screen">
         <h1>The Goon Lagoon</h1>
         <div class="menu-buttons">
-            <button class="menu-button" onclick="showPlayMenu()">Play</button>
+            <button class="menu-button" onclick="showPlayMenu(event)">Play</button>
             <button class="menu-button" onclick="showSettings()">Settings</button>
             <button class="menu-button" onclick="showCredits()">Credits</button>
         </div>
     </div>
-
     <!-- Play Menu -->
     <div id="play-menu" class="play-menu">
         <div class="desktop-icons">
@@ -871,7 +805,6 @@
             </div>
         </div>
     </div>
-
     <!-- Start Menu -->
     <div id="start-menu" class="start-menu">
         <div class="start-menu-header">
@@ -896,7 +829,6 @@
             </button>
         </div>
     </div>
-
     <!-- Settings Menu -->
     <div id="settings-menu" class="settings-menu">
         <div class="settings-header">
@@ -912,13 +844,11 @@
                     <option value="light">Light</option>
                 </select>
             </div>
-
             <h2>Audio Settings</h2>
             <div class="setting-item">
                 <label for="volume">Volume:</label>
                 <input type="range" id="volume" min="0" max="100" value="50">
             </div>
-
             <h2>Game Settings</h2>
             <div class="setting-item">
                 <label for="difficulty">Difficulty:</label>
@@ -928,13 +858,11 @@
                     <option value="hard">Hard</option>
                 </select>
             </div>
-
             <div class="setting-item">
                 <button onclick="saveSettings()">Save Settings</button>
             </div>
         </div>
     </div>
-
     <!-- Credits Menu -->
     <div id="credits-menu" class="credits-menu">
         <div class="credits-header">
@@ -948,20 +876,17 @@
                 <li>UI Designer: Jane Smith</li>
                 <li>Game Integrator: Alex Johnson</li>
             </ul>
-
             <h2>Special Thanks</h2>
             <ul>
                 <li>Community Support</li>
                 <li>Beta Testers</li>
                 <li>Open Source Libraries</li>
             </ul>
-
             <h2>Contact Information</h2>
             <p>Email: support@goonlagoon.com</p>
             <p>Website: www.goonlagoon.com</p>
         </div>
     </div>
-
     <script>
         // Game data with proper icons
         const games = [
@@ -1035,12 +960,10 @@
             const loadingProgress = document.getElementById('loading-progress');
             const loadingText = document.getElementById('loading-text');
             const particleContainer = document.getElementById('particle-container');
-
             // Create particles
             for (let i = 0; i < 50; i++) {
                 createParticle(particleContainer);
             }
-
             // Loading animation
             let progress = 0;
             const loadingMessages = [
@@ -1050,13 +973,10 @@
                 "Finalizing setup...",
                 "Almost ready..."
             ];
-
             const loadingInterval = setInterval(() => {
                 progress += Math.random() * 5;
                 if (progress > 100) progress = 100;
-
                 loadingProgress.style.width = `${progress}%`;
-
                 if (progress >= 20 && loadingText.textContent === loadingMessages[0]) {
                     loadingText.textContent = loadingMessages[1];
                 } else if (progress >= 40 && loadingText.textContent === loadingMessages[1]) {
@@ -1066,7 +986,6 @@
                 } else if (progress >= 80 && loadingText.textContent === loadingMessages[3]) {
                     loadingText.textContent = loadingMessages[4];
                 }
-
                 if (progress >= 100) {
                     clearInterval(loadingInterval);
                     setTimeout(() => {
@@ -1084,26 +1003,20 @@
         function createParticle(container) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-
             // Random size between 2px and 8px
             const size = Math.random() * 6 + 2;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
-
             // Random color from a gradient
             const hue = Math.random() * 60 + 180; // Between 180 and 240 degrees (cyan to blue)
             particle.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-
             // Random position
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.top = `${Math.random() * 100}%`;
-
             // Random animation duration between 3s and 8s
             const duration = Math.random() * 5 + 3;
-
             // Random animation delay between 0s and 2s
             const delay = Math.random() * 2;
-
             // Create animation
             const animation = particle.animate([
                 {
@@ -1124,9 +1037,7 @@
                 iterations: Infinity,
                 easing: 'ease-in-out'
             });
-
             container.appendChild(particle);
-
             // Remove particle when animation ends
             animation.onfinish = () => {
                 particle.remove();
@@ -1135,10 +1046,10 @@
         }
 
         // Function to show the play menu
-        function showPlayMenu() {
+        function showPlayMenu(event) {
+            event.stopPropagation(); // Prevent event from bubbling up
             document.getElementById('menu-screen').classList.remove('active');
             document.getElementById('play-menu').classList.add('active');
-
             // Add fade-in animation to game icons
             const gameIcons = document.querySelectorAll('.game-icon');
             gameIcons.forEach((icon, index) => {
@@ -1201,7 +1112,6 @@
                 focusGame(gameId);
                 return;
             }
-
             // Create a new game window
             const gameWindow = document.createElement('div');
             gameWindow.className = 'game-window';
@@ -1222,14 +1132,11 @@
                     <iframe src="${gameUrl}" frameborder="0"></iframe>
                 </div>
             `;
-
             // Position the game window randomly within the play menu
             gameWindow.style.left = `${Math.random() * (window.innerWidth - 800)}px`;
             gameWindow.style.top = `${Math.random() * (window.innerHeight - 600)}px`;
-
             // Add the game window to the play menu
             document.getElementById('play-menu').appendChild(gameWindow);
-
             // Add the game window to the open windows section
             const openWindow = document.createElement('div');
             openWindow.className = 'open-window';
@@ -1242,15 +1149,12 @@
                 focusGame(gameId);
             };
             document.getElementById('open-windows').appendChild(openWindow);
-
             // Make the game window draggable
             makeDraggable(gameWindow);
-
             // Add particle animation when the game window is clicked
             gameWindow.addEventListener('click', (event) => {
                 createParticleAnimation(event.clientX, event.clientY);
             });
-
             // Focus the new game window
             focusGame(gameId);
         }
@@ -1261,7 +1165,6 @@
             const gameWindow = document.getElementById(`game-window-${gameId}`);
             const playMenu = document.getElementById('play-menu');
             playMenu.appendChild(gameWindow);
-
             // Highlight the open window in the taskbar
             const openWindows = document.querySelectorAll('.open-window');
             openWindows.forEach(window => {
@@ -1277,7 +1180,6 @@
         function minimizeGame(gameId) {
             const gameWindow = document.getElementById(`game-window-${gameId}`);
             gameWindow.style.display = 'none';
-
             // Remove highlight from the open window in the taskbar
             const openWindow = document.getElementById(`open-window-${gameId}`);
             if (openWindow) {
@@ -1310,7 +1212,6 @@
             // Remove the game window
             const gameWindow = document.getElementById(`game-window-${gameId}`);
             gameWindow.remove();
-
             // Remove the game window from the open windows section
             const openWindow = document.getElementById(`open-window-${gameId}`);
             if (openWindow) {
@@ -1322,7 +1223,6 @@
         function filterGames() {
             const searchInput = document.getElementById('search-input').value.toLowerCase();
             const gameIcons = document.querySelectorAll('.game-icon');
-
             gameIcons.forEach(icon => {
                 const gameName = icon.querySelector('span').textContent.toLowerCase();
                 if (gameName.includes(searchInput)) {
@@ -1336,10 +1236,8 @@
         // Function to make an element draggable
         function makeDraggable(element) {
             let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
             const header = element.querySelector('.window-header');
             header.onmousedown = dragMouseDown;
-
             function dragMouseDown(e) {
                 e = e || window.event;
                 e.preventDefault();
@@ -1350,7 +1248,6 @@
                 // Call a function whenever the cursor moves
                 document.onmousemove = elementDrag;
             }
-
             function elementDrag(e) {
                 e = e || window.event;
                 e.preventDefault();
@@ -1363,7 +1260,6 @@
                 element.style.top = (element.offsetTop - pos2) + "px";
                 element.style.left = (element.offsetLeft - pos1) + "px";
             }
-
             function closeDragElement() {
                 // Stop moving when mouse button is released
                 document.onmouseup = null;
@@ -1375,20 +1271,16 @@
         function createParticleAnimation(x, y) {
             const particleCount = 20;
             const colors = ['#00aaff', '#ff00aa', '#ffff00', '#00ff99', '#ff5500'];
-
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = `${x}px`;
                 particle.style.top = `${y}px`;
                 particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
                 document.body.appendChild(particle);
-
                 const angle = Math.random() * Math.PI * 2;
                 const velocity = Math.random() * 5 + 2;
                 const duration = Math.random() * 1000 + 500;
-
                 const animation = particle.animate([
                     {
                         transform: `translate(0, 0)`,
@@ -1402,7 +1294,6 @@
                     duration: duration,
                     easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
                 });
-
                 animation.onfinish = () => {
                     particle.remove();
                 };
@@ -1413,7 +1304,6 @@
         function changeTheme() {
             const theme = document.getElementById('theme').value;
             const root = document.documentElement;
-
             if (theme === 'dark') {
                 root.style.setProperty('--bg-dark', '#121212');
                 root.style.setProperty('--bg-darker', '#0a0a0a');
@@ -1438,19 +1328,31 @@
             alert('Settings saved successfully!');
         }
 
+        // Function to update loading message
+        function updateLoadingMessage() {
+            const loadingMessages = [
+                "Loading the ultimate gaming experience...",
+                "Preparing for epic gameplay...",
+                "Gathering your favorite games...",
+                "Almost there, hold on tight...",
+                "The Goon Lagoon is loading..."
+            ];
+            const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+            document.getElementById('loading-message').textContent = loadingMessages[randomIndex];
+        }
+
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
             // Start the intro animation
             startIntroAnimation();
-
+            // Update loading message
+            updateLoadingMessage();
             // Add event listener for the search input
             document.getElementById('search-input').addEventListener('input', filterGames);
-
             // Close start menu when clicking outside
             document.addEventListener('click', function(event) {
                 const startMenu = document.getElementById('start-menu');
                 const startButton = document.querySelector('.start-button');
-
                 if (startMenu.style.display === 'block' &&
                     !startMenu.contains(event.target) &&
                     !startButton.contains(event.target)) {
