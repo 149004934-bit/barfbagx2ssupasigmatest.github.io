@@ -57,6 +57,12 @@
             --start-menu-item-bg: #3a3a3a;
             --start-menu-item-hover: #0078d7;
             --start-menu-item-text: #e1e1e1;
+            --metallic-silver: #C0C0C0;
+            --metallic-copper: #B87333;
+            --metallic-gold: #FFD700;
+            --metallic-blue: #1E90FF;
+            --metallic-green: #32CD32;
+            --metallic-red: #FF6347;
         }
         * {
             box-sizing: border-box;
@@ -165,8 +171,8 @@
             bottom: 40px;
             left: 0;
             width: 300px;
-            background: var(--start-menu-bg);
-            border: var(--start-menu-border);
+            background: var(--metallic-silver);
+            border: 1px solid var(--metallic-copper);
             border-radius: 2px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             display: none;
@@ -174,11 +180,11 @@
             z-index: 1001;
         }
         #start-menu-header {
-            background: var(--start-menu-header-bg);
-            color: var(--start-menu-header-text);
+            background: var(--metallic-blue);
+            color: var(--metallic-gold);
             padding: 10px;
             font-weight: bold;
-            border-bottom: var(--start-menu-border);
+            border-bottom: 1px solid var(--metallic-copper);
         }
         #start-menu-content {
             display: flex;
@@ -186,19 +192,19 @@
         }
         .start-menu-section {
             padding: 5px 0;
-            border-bottom: var(--start-menu-border);
+            border-bottom: 1px solid var(--metallic-copper);
         }
         .start-menu-section:last-child {
             border-bottom: none;
         }
         .start-menu-item {
-            color: var(--start-menu-item-text);
+            color: var(--metallic-gold);
             padding: 8px 15px;
             cursor: pointer;
             transition: background 0.2s;
         }
         .start-menu-item:hover {
-            background: var(--start-menu-item-hover);
+            background: var(--metallic-blue);
         }
         /* Game Icons */
         .game-icon {
@@ -1011,6 +1017,344 @@
             color: var(--win-white);
             margin-left: auto;
         }
+        /* User Profile Screen */
+        #user-profile-screen {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            animation: fadeIn 0.3s ease-out;
+        }
+        #user-profile-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            background: var(--window-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+        }
+        #user-profile-header {
+            background: var(--window-header-bg);
+            color: var(--window-header-text);
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: var(--window-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #user-profile-close {
+            background: var(--win-red);
+            color: var(--win-gray);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        #user-profile-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            background: var(--window-content-bg);
+        }
+        .user-profile-section {
+            background: var(--window-content-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            padding: 15px;
+        }
+        .user-profile-section h2 {
+            color: var(--win-white);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .user-profile-option {
+            margin-bottom: 15px;
+        }
+        .user-profile-option label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--win-white);
+            font-size: 14px;
+        }
+        .user-profile-option input,
+        .user-profile-option select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--win-gray-lighter);
+            border-radius: 2px;
+            background: var(--win-gray);
+            color: var(--win-white);
+            font-size: 14px;
+        }
+        /* Community Screen */
+        #community-screen {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            animation: fadeIn 0.3s ease-out;
+        }
+        #community-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            background: var(--window-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+        }
+        #community-header {
+            background: var(--window-header-bg);
+            color: var(--window-header-text);
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: var(--window-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #community-close {
+            background: var(--win-red);
+            color: var(--win-gray);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        #community-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            background: var(--window-content-bg);
+        }
+        .community-section {
+            background: var(--window-content-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            padding: 15px;
+        }
+        .community-section h2 {
+            color: var(--win-white);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .community-post {
+            background: var(--window-content-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .community-post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .community-post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--win-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--win-white);
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .community-post-user {
+            color: var(--win-white);
+            font-weight: bold;
+        }
+        .community-post-time {
+            color: var(--win-gray-lighter);
+            font-size: 12px;
+            margin-left: auto;
+        }
+        .community-post-content {
+            color: var(--win-white);
+            margin-bottom: 10px;
+        }
+        .community-post-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .community-post-action {
+            color: var(--win-gray-lighter);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .community-post-action:hover {
+            color: var(--win-blue);
+        }
+        .community-post-action .material-icons {
+            margin-right: 5px;
+        }
+        #community-post-form {
+            background: var(--window-content-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            padding: 15px;
+        }
+        #community-post-form h2 {
+            color: var(--win-white);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        #community-post-form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--win-gray-lighter);
+            border-radius: 2px;
+            background: var(--win-gray);
+            color: var(--win-white);
+            font-size: 14px;
+            margin-bottom: 10px;
+            min-height: 100px;
+        }
+        #community-post-form button {
+            background: var(--win-blue);
+            color: var(--win-white);
+            padding: 8px 20px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        #community-post-form button:hover {
+            background: var(--win-blue-light);
+        }
+        /* Analytics Screen */
+        #analytics-screen {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            animation: fadeIn 0.3s ease-out;
+        }
+        #analytics-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            background: var(--window-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+        }
+        #analytics-header {
+            background: var(--window-header-bg);
+            color: var(--window-header-text);
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: var(--window-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #analytics-close {
+            background: var(--win-red);
+            color: var(--win-gray);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        #analytics-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            background: var(--window-content-bg);
+        }
+        .analytics-section {
+            background: var(--window-content-bg);
+            border: var(--window-border);
+            border-radius: 2px;
+            padding: 15px;
+        }
+        .analytics-section h2 {
+            color: var(--win-white);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .analytics-chart {
+            width: 100%;
+            height: 300px;
+            background: var(--win-gray);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--win-white);
+        }
+        .analytics-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .analytics-stat {
+            background: var(--win-gray);
+            border-radius: 2px;
+            padding: 15px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .analytics-stat-title {
+            color: var(--win-white);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .analytics-stat-value {
+            color: var(--win-blue);
+            font-size: 24px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -1056,11 +1400,14 @@
         <div id="start-menu-header">THE GOON LAGOON</div>
         <div id="start-menu-content">
             <div class="start-menu-section">
+                <div class="start-menu-item" onclick="showUserProfile()">User Profile</div>
                 <div class="start-menu-item" onclick="showSettings()">Settings</div>
                 <div class="start-menu-item" onclick="showCredits()">Credits</div>
                 <div class="start-menu-item" onclick="showAchievements()">Achievements</div>
                 <div class="start-menu-item" onclick="showLeaderboard()">Leaderboard</div>
                 <div class="start-menu-item" onclick="showGameStats()">Game Stats</div>
+                <div class="start-menu-item" onclick="showCommunity()">Community</div>
+                <div class="start-menu-item" onclick="showAnalytics()">Analytics</div>
                 <div class="start-menu-item" onclick="showExitConfirmation()">Exit</div>
             </div>
         </div>
@@ -1393,6 +1740,181 @@
             <!-- Game stats will be added here dynamically -->
         </div>
     </div>
+    <!-- User Profile Screen -->
+    <div id="user-profile-screen">
+        <div id="user-profile-window">
+            <div id="user-profile-header">
+                <span>User Profile</span>
+                <div id="user-profile-close" onclick="hideUserProfile()">×</div>
+            </div>
+            <div id="user-profile-content">
+                <div class="user-profile-section">
+                    <h2>Personal Information</h2>
+                    <div class="user-profile-option">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm your password">
+                    </div>
+                </div>
+                <div class="user-profile-section">
+                    <h2>Profile Settings</h2>
+                    <div class="user-profile-option">
+                        <label for="avatar">Avatar:</label>
+                        <input type="file" id="avatar" accept="image/*">
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="bio">Bio:</label>
+                        <textarea id="bio" placeholder="Tell us about yourself"></textarea>
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" placeholder="Enter your location">
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="website">Website:</label>
+                        <input type="url" id="website" placeholder="Enter your website URL">
+                    </div>
+                </div>
+                <div class="user-profile-section">
+                    <h2>Privacy Settings</h2>
+                    <div class="user-profile-option">
+                        <label for="profile-visibility">Profile Visibility:</label>
+                        <select id="profile-visibility">
+                            <option value="public">Public</option>
+                            <option value="friends">Friends Only</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="activity-visibility">Activity Visibility:</label>
+                        <select id="activity-visibility">
+                            <option value="public">Public</option>
+                            <option value="friends">Friends Only</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="search-visibility">Search Visibility:</label>
+                        <select id="search-visibility">
+                            <option value="public">Public</option>
+                            <option value="friends">Friends Only</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="user-profile-section">
+                    <h2>Notification Settings</h2>
+                    <div class="user-profile-option">
+                        <label for="email-notifications">Email Notifications:</label>
+                        <select id="email-notifications">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="push-notifications">Push Notifications:</label>
+                        <select id="push-notifications">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                    <div class="user-profile-option">
+                        <label for="in-app-notifications">In-App Notifications:</label>
+                        <select id="in-app-notifications">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="user-profile-section">
+                    <h2>Account Actions</h2>
+                    <div class="user-profile-option">
+                        <button onclick="saveProfile()">Save Profile</button>
+                        <button onclick="deleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Community Screen -->
+    <div id="community-screen">
+        <div id="community-window">
+            <div id="community-header">
+                <span>Community</span>
+                <div id="community-close" onclick="hideCommunity()">×</div>
+            </div>
+            <div id="community-content">
+                <div class="community-section">
+                    <h2>Recent Posts</h2>
+                    <div id="community-posts">
+                        <!-- Community posts will be added here dynamically -->
+                    </div>
+                </div>
+                <div class="community-section">
+                    <h2>Create a Post</h2>
+                    <div id="community-post-form">
+                        <textarea id="post-content" placeholder="What's on your mind?"></textarea>
+                        <button onclick="createPost()">Post</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Analytics Screen -->
+    <div id="analytics-screen">
+        <div id="analytics-window">
+            <div id="analytics-header">
+                <span>Analytics</span>
+                <div id="analytics-close" onclick="hideAnalytics()">×</div>
+            </div>
+            <div id="analytics-content">
+                <div class="analytics-section">
+                    <h2>Game Playtime</h2>
+                    <div class="analytics-chart" id="game-playtime-chart">
+                        <!-- Game playtime chart will be added here dynamically -->
+                    </div>
+                </div>
+                <div class="analytics-section">
+                    <h2>Game Preferences</h2>
+                    <div class="analytics-chart" id="game-preferences-chart">
+                        <!-- Game preferences chart will be added here dynamically -->
+                    </div>
+                </div>
+                <div class="analytics-section">
+                    <h2>Statistics</h2>
+                    <div class="analytics-stats">
+                        <div class="analytics-stat">
+                            <div class="analytics-stat-title">Total Games Played</div>
+                            <div class="analytics-stat-value" id="total-games-played">0</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="analytics-stat-title">Total Playtime</div>
+                            <div class="analytics-stat-value" id="total-playtime">0 hours</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="analytics-stat-title">Favorite Game</div>
+                            <div class="analytics-stat-value" id="favorite-game">None</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="analytics-stat-title">Most Played Game</div>
+                            <div class="analytics-stat-value" id="most-played-game">None</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Exit Confirmation -->
     <div id="exit-confirmation">
         <h3>Are you sure you want to exit?</h3>
@@ -1404,68 +1926,68 @@
     <script>
         // Game data with actual images
         const games = [
-            { id: 'vril-craft', name: 'Vril Craft', url: 'https://example.com/vril-craft', icon: 'https://i.imgur.com/vril-craft-icon.png' },
-            { id: 'movies', name: 'Movies', url: 'https://example.com/movies', icon: 'https://i.imgur.com/movies-icon.png' },
-            { id: 'slope-ball', name: 'Slope Ball', url: 'https://example.com/slope-ball', icon: 'https://i.imgur.com/slope-ball-icon.png' },
-            { id: 'slope-nexus', name: 'Slope Nexus', url: 'https://example.com/slope-nexus', icon: 'https://i.imgur.com/slope-nexus-icon.png' },
-            { id: 'endless-runner', name: 'Endless Runner', url: 'https://example.com/endless-runner', icon: 'https://i.imgur.com/endless-runner-icon.png' },
-            { id: 'rocket-game', name: 'Rocket Game', url: 'https://example.com/rocket-game', icon: 'https://i.imgur.com/rocket-game-icon.png' },
-            { id: 'box-shooter', name: 'Box Shooter', url: 'https://example.com/box-shooter', icon: 'https://i.imgur.com/box-shooter-icon.png' },
-            { id: 'ghost-game', name: 'Ghost Game', url: 'https://example.com/ghost-game', icon: 'https://i.imgur.com/ghost-game-icon.png' },
-            { id: 'cave-explorer', name: 'Cave Explorer', url: 'https://example.com/cave-explorer', icon: 'https://i.imgur.com/cave-explorer-icon.png' },
-            { id: 'titan-punk', name: 'Titan Punk', url: 'https://example.com/titan-punk', icon: 'https://i.imgur.com/titan-punk-icon.png' },
-            { id: 'mini-game', name: 'Mini Game', url: 'https://example.com/mini-game', icon: 'https://i.imgur.com/mini-game-icon.png' },
-            { id: 'game-of-life', name: 'Game Of Life', url: 'https://example.com/game-of-life', icon: 'https://i.imgur.com/game-of-life-icon.png' },
-            { id: 'ultrakill', name: 'Ultrakill', url: 'https://example.com/ultrakill', icon: 'https://i.imgur.com/ultrakill-icon.png' },
-            { id: 'random-game', name: 'Random Game', url: 'https://example.com/random-game', icon: 'https://i.imgur.com/random-game-icon.png' },
-            { id: '2048-puzzle', name: '2048 Puzzle', url: 'https://example.com/2048-puzzle', icon: 'https://i.imgur.com/2048-puzzle-icon.png' },
-            { id: 'kopter', name: 'Kopter', url: 'https://example.com/kopter', icon: 'https://i.imgur.com/kopter-icon.png' },
-            { id: 'mario-bros', name: 'Mario Bros', url: 'https://example.com/mario-bros', icon: 'https://i.imgur.com/mario-bros-icon.png' },
-            { id: 'flip-exchange', name: 'Flip Exchange', url: 'https://example.com/flip-exchange', icon: 'https://i.imgur.com/flip-exchange-icon.png' },
-            { id: 'solar-sim', name: 'Solar Sim', url: 'https://example.com/solar-sim', icon: 'https://i.imgur.com/solar-sim-icon.png' },
-            { id: 'horror-3d', name: 'Horror 3D', url: 'https://example.com/horror-3d', icon: 'https://i.imgur.com/horror-3d-icon.png' },
-            { id: 'subway-surfers', name: 'Subway Surfers', url: 'https://example.com/subway-surfers', icon: 'https://i.imgur.com/subway-surfers-icon.png' },
-            { id: 'run-3', name: 'Run 3', url: 'https://example.com/run-3', icon: 'https://i.imgur.com/run-3-icon.png' },
-            { id: 'drift-boss', name: 'Drift Boss', url: 'https://example.com/drift-boss', icon: 'https://i.imgur.com/drift-boss-icon.png' },
-            { id: 'chaos-proxy', name: 'Chaos Proxy', url: 'https://example.com/chaos-proxy', icon: 'https://i.imgur.com/chaos-proxy-icon.png' },
-            { id: 'drag-racer', name: 'Drag Racer', url: 'https://example.com/drag-racer', icon: 'https://i.imgur.com/drag-racer-icon.png' },
-            { id: 'retro-bowl', name: 'Retro Bowl', url: 'https://example.com/retro-bowl', icon: 'https://i.imgur.com/retro-bowl-icon.png' },
-            { id: 'nzp', name: 'NZP', url: 'https://example.com/nzp', icon: 'https://i.imgur.com/nzp-icon.png' },
-            { id: 'black-ops-zombies', name: 'Black Ops Zombies', url: 'https://example.com/black-ops-zombies', icon: 'https://i.imgur.com/black-ops-zombies-icon.png' },
-            { id: 'fnad', name: 'FNAD', url: 'https://example.com/fnad', icon: 'https://i.imgur.com/fnad-icon.png' },
-            { id: 'worlds-hardest-game', name: 'World\'s Hardest Game', url: 'https://example.com/worlds-hardest-game', icon: 'https://i.imgur.com/worlds-hardest-game-icon.png' },
-            { id: 'temple-run-2', name: 'Temple Run 2', url: 'https://example.com/temple-run-2', icon: 'https://i.imgur.com/temple-run-2-icon.png' },
-            { id: 'fruit-ninja', name: 'Fruit Ninja', url: 'https://example.com/fruit-ninja', icon: 'https://i.imgur.com/fruit-ninja-icon.png' },
-            { id: 'paper-io-2', name: 'Paper.io 2', url: 'https://example.com/paper-io-2', icon: 'https://i.imgur.com/paper-io-2-icon.png' },
-            { id: 'crossy-road', name: 'Crossy Road', url: 'https://example.com/crossy-road', icon: 'https://i.imgur.com/crossy-road-icon.png' },
-            { id: 'geometry-dash', name: 'Geometry Dash', url: 'https://example.com/geometry-dash', icon: 'https://i.imgur.com/geometry-dash-icon.png' },
-            { id: 'aaronos', name: 'AaronOS', url: 'https://example.com/aaronos', icon: 'https://i.imgur.com/aaronos-icon.png' },
-            { id: 'niche-ai', name: 'Niche AI', url: 'https://example.com/niche-ai', icon: 'https://i.imgur.com/niche-ai-icon.png' },
-            { id: 'spiral-roll', name: 'Spiral Roll', url: 'https://example.com/spiral-roll', icon: 'https://i.imgur.com/spiral-roll-icon.png' },
-            { id: 'funny-shooter-2', name: 'Funny Shooter 2', url: 'https://example.com/funny-shooter-2', icon: 'https://i.imgur.com/funny-shooter-2-icon.png' },
-            { id: 'grow-a-garden', name: 'Grow a Garden', url: 'https://example.com/grow-a-garden', icon: 'https://i.imgur.com/grow-a-garden-icon.png' },
-            { id: 'contra-3', name: 'Contra 3', url: 'https://example.com/contra-3', icon: 'https://i.imgur.com/contra-3-icon.png' },
-            { id: 'clash-royale', name: 'Clash Royale', url: 'https://example.com/clash-royale', icon: 'https://i.imgur.com/clash-royale-icon.png' },
-            { id: 'karlson-demo', name: 'Karlson Demo', url: 'https://example.com/karlson-demo', icon: 'https://i.imgur.com/karlson-demo-icon.png' },
-            { id: 'steal-a-brainrot-2', name: 'Steal a Brainrot 2', url: 'https://example.com/steal-a-brainrot-2', icon: 'https://i.imgur.com/steal-a-brainrot-2-icon.png' },
-            { id: 'superhot', name: 'Superhot', url: 'https://example.com/superhot', icon: 'https://i.imgur.com/superhot-icon.png' },
-            { id: 'emulator-test-v1', name: 'Emulator Test V1', url: 'https://example.com/emulator-test-v1', icon: 'https://i.imgur.com/emulator-test-v1-icon.png' },
-            { id: '1v1-lol', name: '1v1 Lol', url: 'https://example.com/1v1-lol', icon: 'https://i.imgur.com/1v1-lol-icon.png' },
-            { id: 'doki-doki-lit-club', name: 'Doki Doki Lit Club', url: 'https://example.com/doki-doki-lit-club', icon: 'https://i.imgur.com/doki-doki-lit-club-icon.png' },
-            { id: 'quake-3-arena', name: 'Quake 3 Arena', url: 'https://example.com/quake-3-arena', icon: 'https://i.imgur.com/quake-3-arena-icon.png' },
-            { id: 'basket-random', name: 'Basket Random', url: 'https://example.com/basket-random', icon: 'https://i.imgur.com/basket-random-icon.png' },
-            { id: 'geometry-dash-2', name: 'Geometry Dash', url: 'https://example.com/geometry-dash-2', icon: 'https://i.imgur.com/geometry-dash-2-icon.png' },
-            { id: 'punch-out', name: 'Punch Out', url: 'https://example.com/punch-out', icon: 'https://i.imgur.com/punch-out-icon.png' },
-            { id: 'lego-batman', name: 'Lego Batman', url: 'https://example.com/lego-batman', icon: 'https://i.imgur.com/lego-batman-icon.png' },
-            { id: 'instagram-reels', name: 'Instagram Reels', url: 'https://example.com/instagram-reels', icon: 'https://i.imgur.com/instagram-reels-icon.png' },
-            { id: 'bullet-force', name: 'Bullet Force', url: 'https://example.com/bullet-force', icon: 'https://i.imgur.com/bullet-force-icon.png' },
-            { id: 'fallout', name: 'Fallout', url: 'https://example.com/fallout', icon: 'https://i.imgur.com/fallout-icon.png' },
-            { id: 'osu', name: 'OSU!', url: 'https://example.com/osu', icon: 'https://i.imgur.com/osu-icon.png' },
-            { id: 'rivals', name: 'Rivals', url: 'https://example.com/rivals', icon: 'https://i.imgur.com/rivals-icon.png' },
-            { id: 'fnad-2', name: 'FNAD', url: 'https://example.com/fnad-2', icon: 'https://i.imgur.com/fnad-2-icon.png' },
-            { id: 'obby-bike', name: 'Obby Bike', url: 'https://example.com/obby-bike', icon: 'https://i.imgur.com/obby-bike-icon.png' },
-            { id: 'gfnae', name: 'GFNAE', url: 'https://example.com/gfnae', icon: 'https://i.imgur.com/gfnae-icon.png' },
-            { id: 'pvz-fusion', name: 'PVZ Fusion', url: 'https://example.com/pvz-fusion', icon: 'https://i.imgur.com/pvz-fusion-icon.png' }
+            { id: 'vril-craft', name: 'Vril Craft', url: 'https://example.com/vril-craft', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=V' },
+            { id: 'movies', name: 'Movies', url: 'https://example.com/movies', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
+            { id: 'slope-ball', name: 'Slope Ball', url: 'https://example.com/slope-ball', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'slope-nexus', name: 'Slope Nexus', url: 'https://example.com/slope-nexus', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'endless-runner', name: 'Endless Runner', url: 'https://example.com/endless-runner', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=E' },
+            { id: 'rocket-game', name: 'Rocket Game', url: 'https://example.com/rocket-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'box-shooter', name: 'Box Shooter', url: 'https://example.com/box-shooter', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
+            { id: 'ghost-game', name: 'Ghost Game', url: 'https://example.com/ghost-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'cave-explorer', name: 'Cave Explorer', url: 'https://example.com/cave-explorer', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'titan-punk', name: 'Titan Punk', url: 'https://example.com/titan-punk', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=T' },
+            { id: 'mini-game', name: 'Mini Game', url: 'https://example.com/mini-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
+            { id: 'game-of-life', name: 'Game Of Life', url: 'https://example.com/game-of-life', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'ultrakill', name: 'Ultrakill', url: 'https://example.com/ultrakill', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=U' },
+            { id: 'random-game', name: 'Random Game', url: 'https://example.com/random-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: '2048-puzzle', name: '2048 Puzzle', url: 'https://example.com/2048-puzzle', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=2' },
+            { id: 'kopter', name: 'Kopter', url: 'https://example.com/kopter', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=K' },
+            { id: 'mario-bros', name: 'Mario Bros', url: 'https://example.com/mario-bros', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
+            { id: 'flip-exchange', name: 'Flip Exchange', url: 'https://example.com/flip-exchange', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'solar-sim', name: 'Solar Sim', url: 'https://example.com/solar-sim', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'horror-3d', name: 'Horror 3D', url: 'https://example.com/horror-3d', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=H' },
+            { id: 'subway-surfers', name: 'Subway Surfers', url: 'https://example.com/subway-surfers', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'run-3', name: 'Run 3', url: 'https://example.com/run-3', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'drift-boss', name: 'Drift Boss', url: 'https://example.com/drift-boss', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
+            { id: 'chaos-proxy', name: 'Chaos Proxy', url: 'https://example.com/chaos-proxy', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'drag-racer', name: 'Drag Racer', url: 'https://example.com/drag-racer', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
+            { id: 'retro-bowl', name: 'Retro Bowl', url: 'https://example.com/retro-bowl', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'nzp', name: 'NZP', url: 'https://example.com/nzp', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=N' },
+            { id: 'black-ops-zombies', name: 'Black Ops Zombies', url: 'https://example.com/black-ops-zombies', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
+            { id: 'fnad', name: 'FNAD', url: 'https://example.com/fnad', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'worlds-hardest-game', name: 'World\'s Hardest Game', url: 'https://example.com/worlds-hardest-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=W' },
+            { id: 'temple-run-2', name: 'Temple Run 2', url: 'https://example.com/temple-run-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=T' },
+            { id: 'fruit-ninja', name: 'Fruit Ninja', url: 'https://example.com/fruit-ninja', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'paper-io-2', name: 'Paper.io 2', url: 'https://example.com/paper-io-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' },
+            { id: 'crossy-road', name: 'Crossy Road', url: 'https://example.com/crossy-road', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'geometry-dash', name: 'Geometry Dash', url: 'https://example.com/geometry-dash', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'aaronos', name: 'AaronOS', url: 'https://example.com/aaronos', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=A' },
+            { id: 'niche-ai', name: 'Niche AI', url: 'https://example.com/niche-ai', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=N' },
+            { id: 'spiral-roll', name: 'Spiral Roll', url: 'https://example.com/spiral-roll', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'funny-shooter-2', name: 'Funny Shooter 2', url: 'https://example.com/funny-shooter-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'grow-a-garden', name: 'Grow a Garden', url: 'https://example.com/grow-a-garden', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'contra-3', name: 'Contra 3', url: 'https://example.com/contra-3', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'clash-royale', name: 'Clash Royale', url: 'https://example.com/clash-royale', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'karlson-demo', name: 'Karlson Demo', url: 'https://example.com/karlson-demo', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=K' },
+            { id: 'steal-a-brainrot-2', name: 'Steal a Brainrot 2', url: 'https://example.com/steal-a-brainrot-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'superhot', name: 'Superhot', url: 'https://example.com/superhot', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'emulator-test-v1', name: 'Emulator Test V1', url: 'https://example.com/emulator-test-v1', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=E' },
+            { id: '1v1-lol', name: '1v1 Lol', url: 'https://example.com/1v1-lol', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=1' },
+            { id: 'doki-doki-lit-club', name: 'Doki Doki Lit Club', url: 'https://example.com/doki-doki-lit-club', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
+            { id: 'quake-3-arena', name: 'Quake 3 Arena', url: 'https://example.com/quake-3-arena', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=Q' },
+            { id: 'basket-random', name: 'Basket Random', url: 'https://example.com/basket-random', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
+            { id: 'geometry-dash-2', name: 'Geometry Dash', url: 'https://example.com/geometry-dash-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'punch-out', name: 'Punch Out', url: 'https://example.com/punch-out', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' },
+            { id: 'lego-batman', name: 'Lego Batman', url: 'https://example.com/lego-batman', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=L' },
+            { id: 'instagram-reels', name: 'Instagram Reels', url: 'https://example.com/instagram-reels', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=I' },
+            { id: 'bullet-force', name: 'Bullet Force', url: 'https://example.com/bullet-force', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
+            { id: 'fallout', name: 'Fallout', url: 'https://example.com/fallout', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'osu', name: 'OSU!', url: 'https://example.com/osu', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=O' },
+            { id: 'rivals', name: 'Rivals', url: 'https://example.com/rivals', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'fnad-2', name: 'FNAD', url: 'https://example.com/fnad-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'obby-bike', name: 'Obby Bike', url: 'https://example.com/obby-bike', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=O' },
+            { id: 'gfnae', name: 'GFNAE', url: 'https://example.com/gfnae', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'pvz-fusion', name: 'PVZ Fusion', url: 'https://example.com/pvz-fusion', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' }
         ];
         // Minecraft-style loading phrases
         const minecraftPhrases = [
@@ -1534,6 +2056,24 @@
         };
         // Current particle effect
         let currentParticleEffect = null;
+        // User profile data
+        let userProfile = {
+            username: '',
+            email: '',
+            password: '',
+            avatar: '',
+            bio: '',
+            location: '',
+            website: '',
+            profileVisibility: 'public',
+            activityVisibility: 'public',
+            searchVisibility: 'public',
+            emailNotifications: 'on',
+            pushNotifications: 'on',
+            inAppNotifications: 'on'
+        };
+        // Community posts data
+        let communityPosts = [];
         // Initialize the desktop
         function initDesktop() {
             const desktop = document.getElementById('desktop');
@@ -1568,9 +2108,18 @@
             document.getElementById('ai-chat-button').addEventListener('click', toggleAIChat);
             // Add event listeners for Minecraft menu buttons
             document.getElementById('start-game').addEventListener('click', startGame);
-            document.getElementById('settings-button').addEventListener('click', showSettingsFromMenu);
-            document.getElementById('credits-button').addEventListener('click', showCreditsFromMenu);
-            document.getElementById('exit-button').addEventListener('click', showExitConfirmationFromMenu);
+            document.getElementById('settings-button').addEventListener('click', (e) => {
+                e.stopPropagation();
+                showSettingsFromMenu();
+            });
+            document.getElementById('credits-button').addEventListener('click', (e) => {
+                e.stopPropagation();
+                showCreditsFromMenu();
+            });
+            document.getElementById('exit-button').addEventListener('click', (e) => {
+                e.stopPropagation();
+                showExitConfirmationFromMenu();
+            });
             // Close menus when clicking elsewhere
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('#start-button') && !e.target.closest('#start-menu')) {
@@ -1631,35 +2180,28 @@
             const centerY = window.innerHeight / 2;
             const numOrbs = 30;
             const maxDistance = Math.min(window.innerWidth, window.innerHeight) * 0.4;
-
             for (let i = 0; i < numOrbs; i++) {
                 const orb = document.createElement('div');
                 orb.className = 'orb';
-
                 // Random starting position
                 const angle = Math.random() * Math.PI * 2;
                 const distance = Math.random() * maxDistance;
                 const startX = centerX + Math.cos(angle) * distance;
                 const startY = centerY + Math.sin(angle) * distance;
-
                 orb.style.left = `${startX}px`;
                 orb.style.top = `${startY}px`;
-
                 // Random animation properties
                 const duration = 5 + Math.random() * 10;
                 const delay = Math.random() * 2;
                 const size = 5 + Math.random() * 10;
                 orb.style.width = `${size}px`;
                 orb.style.height = `${size}px`;
-
                 // Random color
                 const colors = ['#0078d7', '#0099ff', '#ffb900', '#107c10', '#e81123'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 orb.style.backgroundColor = color;
-
                 // Animation
                 orb.style.animation = `orbMove ${duration}s ${delay}s infinite ease-in-out`;
-
                 loadingAnimation.appendChild(orb);
             }
         }
@@ -1777,7 +2319,6 @@
         function updateGameStatsDisplay() {
             const gameStatsContent = document.getElementById('game-stats-content');
             gameStatsContent.innerHTML = '';
-
             // Add general stats
             const generalStats = [
                 { title: 'Total Games Played', value: gameStats.totalGamesPlayed },
@@ -1786,7 +2327,6 @@
                 { title: 'Highest Score', value: gameStats.highestScore },
                 { title: 'Average Score', value: gameStats.averageScore.toFixed(2) }
             ];
-
             generalStats.forEach(stat => {
                 const gameStatItem = document.createElement('div');
                 gameStatItem.className = 'game-stat-item';
@@ -1796,7 +2336,6 @@
                 `;
                 gameStatsContent.appendChild(gameStatItem);
             });
-
             // Add game-specific stats if available
             if (Object.keys(gameStats.gameSpecificStats).length > 0) {
                 const gameSpecificTitle = document.createElement('h3');
@@ -1804,21 +2343,17 @@
                 gameSpecificTitle.style.color = 'var(--win-white)';
                 gameSpecificTitle.style.marginTop = '20px';
                 gameStatsContent.appendChild(gameSpecificTitle);
-
                 for (const [gameId, stats] of Object.entries(gameStats.gameSpecificStats)) {
                     const game = games.find(g => g.id === gameId);
                     if (game) {
                         const gameSection = document.createElement('div');
                         gameSection.className = 'game-stat-section';
                         gameSection.style.marginTop = '15px';
-
                         const gameTitle = document.createElement('h4');
                         gameTitle.textContent = game.name;
                         gameTitle.style.color = 'var(--win-white)';
                         gameTitle.style.marginBottom = '10px';
-
                         gameSection.appendChild(gameTitle);
-
                         for (const [statName, statValue] of Object.entries(stats)) {
                             const gameStatItem = document.createElement('div');
                             gameStatItem.className = 'game-stat-item';
@@ -1828,7 +2363,6 @@
                             `;
                             gameSection.appendChild(gameStatItem);
                         }
-
                         gameStatsContent.appendChild(gameSection);
                     }
                 }
@@ -1843,15 +2377,12 @@
             } else {
                 gameStats.totalLosses++;
             }
-
             if (score > gameStats.highestScore) {
                 gameStats.highestScore = score;
             }
-
             // Calculate new average score
             const totalScores = gameStats.totalGamesPlayed * gameStats.averageScore + score;
             gameStats.averageScore = totalScores / gameStats.totalGamesPlayed;
-
             // Update game-specific stats
             if (!gameStats.gameSpecificStats[gameId]) {
                 gameStats.gameSpecificStats[gameId] = {
@@ -1862,7 +2393,6 @@
                     averageScore: 0
                 };
             }
-
             const gameSpecificStats = gameStats.gameSpecificStats[gameId];
             gameSpecificStats.timesPlayed++;
             if (isWin) {
@@ -1870,15 +2400,12 @@
             } else {
                 gameSpecificStats.losses++;
             }
-
             if (score > gameSpecificStats.highestScore) {
                 gameSpecificStats.highestScore = score;
             }
-
             // Calculate new average score for this game
             const totalGameScores = gameSpecificStats.timesPlayed * gameSpecificStats.averageScore + score;
             gameSpecificStats.averageScore = totalGameScores / gameSpecificStats.timesPlayed;
-
             // Update the display if the stats menu is open
             if (document.getElementById('game-stats-menu').style.display === 'flex') {
                 updateGameStatsDisplay();
@@ -1986,6 +2513,122 @@
         // Hide game stats menu
         function hideGameStats() {
             document.getElementById('game-stats-menu').style.display = 'none';
+        }
+        // Show user profile screen
+        function showUserProfile() {
+            document.getElementById('user-profile-screen').style.display = 'flex';
+            hideStartMenu();
+        }
+        // Hide user profile screen
+        function hideUserProfile() {
+            document.getElementById('user-profile-screen').style.display = 'none';
+        }
+        // Show community screen
+        function showCommunity() {
+            document.getElementById('community-screen').style.display = 'flex';
+            hideStartMenu();
+            updateCommunityPosts();
+        }
+        // Hide community screen
+        function hideCommunity() {
+            document.getElementById('community-screen').style.display = 'none';
+        }
+        // Show analytics screen
+        function showAnalytics() {
+            document.getElementById('analytics-screen').style.display = 'flex';
+            hideStartMenu();
+            updateAnalytics();
+        }
+        // Hide analytics screen
+        function hideAnalytics() {
+            document.getElementById('analytics-screen').style.display = 'none';
+        }
+        // Update community posts
+        function updateCommunityPosts() {
+            const communityPostsContainer = document.getElementById('community-posts');
+            communityPostsContainer.innerHTML = '';
+            // Sample community posts data
+            const samplePosts = [
+                {
+                    user: 'Player1',
+                    time: '2 hours ago',
+                    content: 'Just finished the new level in Geometry Dash! It was so hard but so satisfying when I finally beat it!',
+                    likes: 15,
+                    comments: 3
+                },
+                {
+                    user: 'Player2',
+                    time: '5 hours ago',
+                    content: 'Anyone else playing Rivals right now? I need a team for the next match!',
+                    likes: 8,
+                    comments: 2
+                },
+                {
+                    user: 'Player3',
+                    time: '1 day ago',
+                    content: 'I just discovered this amazing game called "Ultrakill" and I\'m obsessed. The graphics and gameplay are next level!',
+                    likes: 22,
+                    comments: 5
+                }
+            ];
+            // Display community posts
+            samplePosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'community-post';
+                postElement.innerHTML = `
+                    <div class="community-post-header">
+                        <div class="community-post-avatar">${post.user.charAt(0)}</div>
+                        <div class="community-post-user">${post.user}</div>
+                        <div class="community-post-time">${post.time}</div>
+                    </div>
+                    <div class="community-post-content">${post.content}</div>
+                    <div class="community-post-actions">
+                        <div class="community-post-action">
+                            <span class="material-icons">thumb_up</span>
+                            <span>${post.likes}</span>
+                        </div>
+                        <div class="community-post-action">
+                            <span class="material-icons">comment</span>
+                            <span>${post.comments}</span>
+                        </div>
+                    </div>
+                `;
+                communityPostsContainer.appendChild(postElement);
+            });
+        }
+        // Create a new community post
+        function createPost() {
+            const postContent = document.getElementById('post-content').value.trim();
+            if (postContent) {
+                const newPost = {
+                    user: userProfile.username || 'Anonymous',
+                    time: 'Just now',
+                    content: postContent,
+                    likes: 0,
+                    comments: 0
+                };
+                communityPosts.unshift(newPost);
+                updateCommunityPosts();
+                document.getElementById('post-content').value = '';
+            }
+        }
+        // Update analytics
+        function updateAnalytics() {
+            // Sample analytics data
+            const analyticsData = {
+                totalGamesPlayed: 42,
+                totalPlaytime: 12.5,
+                favoriteGame: 'Geometry Dash',
+                mostPlayedGame: 'Rivals'
+            };
+            // Update analytics display
+            document.getElementById('total-games-played').textContent = analyticsData.totalGamesPlayed;
+            document.getElementById('total-playtime').textContent = `${analyticsData.totalPlaytime} hours`;
+            document.getElementById('favorite-game').textContent = analyticsData.favoriteGame;
+            document.getElementById('most-played-game').textContent = analyticsData.mostPlayedGame;
+            // Update charts (in a real app, you would use a library like Chart.js)
+            document.getElementById('game-playtime-chart').textContent = 'Game Playtime Chart (Placeholder)';
+            document.getElementById('game-preferences-chart').textContent = 'Game Preferences Chart (Placeholder)';
         }
         // Open a game in a new window
         function openGame(game) {
@@ -2143,20 +2786,16 @@
             const rect = element.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
-
             for (let i = 0; i < parseInt(getComputedStyle(document.documentElement).getPropertyValue('--particle-count')); i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-
                 // Set particle color from CSS variable
                 const particleColor = getComputedStyle(document.documentElement).getPropertyValue('--particle-color');
                 particle.style.backgroundColor = particleColor;
-
                 // Set particle size from CSS variable
                 const particleSize = getComputedStyle(document.documentElement).getPropertyValue('--particle-size');
                 particle.style.width = particleSize;
                 particle.style.height = particleSize;
-
                 // Random position around the window
                 const angle = Math.random() * Math.PI * 2;
                 const distance = Math.random() * 100 + 50;
@@ -2164,7 +2803,6 @@
                 const y = centerY + Math.sin(angle) * distance;
                 particle.style.left = `${x}px`;
                 particle.style.top = `${y}px`;
-
                 // Random animation properties
                 const duration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-speed'));
                 const delay = Math.random() * 0.5;
@@ -2173,9 +2811,7 @@
                 particle.style.setProperty('--tx', tx);
                 particle.style.setProperty('--ty', ty);
                 particle.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                 document.body.appendChild(particle);
-
                 // Remove particle after animation
                 setTimeout(() => {
                     particle.remove();
@@ -2186,20 +2822,16 @@
         function createClickEffect(e) {
             const clickEffect = document.createElement('div');
             clickEffect.className = 'particle';
-
             // Set particle color from CSS variable
             const particleColor = getComputedStyle(document.documentElement).getPropertyValue('--particle-color');
             clickEffect.style.backgroundColor = particleColor;
-
             // Set particle size from CSS variable
             const particleSize = getComputedStyle(document.documentElement).getPropertyValue('--particle-size');
             clickEffect.style.width = particleSize;
             clickEffect.style.height = particleSize;
-
             // Position at click location
             clickEffect.style.left = `${e.clientX}px`;
             clickEffect.style.top = `${e.clientY}px`;
-
             // Random animation properties
             const duration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-speed'));
             const delay = 0;
@@ -2208,9 +2840,7 @@
             clickEffect.style.setProperty('--tx', tx);
             clickEffect.style.setProperty('--ty', ty);
             clickEffect.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
             document.body.appendChild(clickEffect);
-
             // Remove particle after animation
             setTimeout(() => {
                 clickEffect.remove();
@@ -2224,7 +2854,6 @@
         // Change theme
         function changeTheme(theme) {
             const root = document.documentElement;
-
             switch (theme) {
                 case 'dark':
                     root.style.setProperty('--bg', '#0a0a0a');
@@ -2281,14 +2910,12 @@
                     root.style.setProperty('--win-white', '#e1e1e1');
                     break;
             }
-
             // Update window styles
             updateWindowStyles();
         }
         // Change desktop background
         function changeDesktopBackground(background) {
             const desktop = document.getElementById('desktop');
-
             switch (background) {
                 case 'default':
                     desktop.style.background = 'url(\'https://i.imgur.com/windows-bg.jpg\') no-repeat center center';
@@ -2318,7 +2945,6 @@
         // Change window style
         function changeWindowStyle(style) {
             const root = document.documentElement;
-
             switch (style) {
                 case 'default':
                     root.style.setProperty('--window-bg', '#2d2d2d');
@@ -2345,7 +2971,6 @@
                     // In a real application, you would have input fields for custom colors
                     break;
             }
-
             // Update window styles
             updateWindowStyles();
         }
@@ -2355,13 +2980,11 @@
             windows.forEach(window => {
                 window.style.background = getComputedStyle(document.documentElement).getPropertyValue('--window-bg');
                 window.style.border = getComputedStyle(document.documentElement).getPropertyValue('--window-border');
-
                 const windowHeader = window.querySelector('.window-header');
                 if (windowHeader) {
                     windowHeader.style.background = getComputedStyle(document.documentElement).getPropertyValue('--window-header-bg');
                     windowHeader.style.color = getComputedStyle(document.documentElement).getPropertyValue('--window-header-text');
                 }
-
                 const windowContent = window.querySelector('.window-content');
                 if (windowContent) {
                     windowContent.style.background = getComputedStyle(document.documentElement).getPropertyValue('--window-content-bg');
@@ -2372,10 +2995,8 @@
         function changeParticleEffect(effect) {
             // Clear any existing particle effects
             clearParticleEffects();
-
             // Set the current particle effect
             currentParticleEffect = effect;
-
             // Apply the selected particle effect
             switch (effect) {
                 case 'none':
@@ -2411,7 +3032,6 @@
             // Remove all existing particles
             const particles = document.querySelectorAll('.particle, .snowflake, .confetti, .firework, .bubble, .star, .heart');
             particles.forEach(particle => particle.remove());
-
             // Clear any intervals or timeouts related to particle effects
             // (In a real application, you would track these)
         }
@@ -2423,29 +3043,23 @@
                     clearInterval(fireworkInterval);
                     return;
                 }
-
                 for (let i = 0; i < numFireworks; i++) {
                     setTimeout(() => {
                         const firework = document.createElement('div');
                         firework.className = 'particle';
-
                         // Random position at the bottom of the screen
                         const x = Math.random() * window.innerWidth;
                         const y = window.innerHeight;
-
                         firework.style.left = `${x}px`;
                         firework.style.top = `${y}px`;
-
                         // Random color
                         const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
                         const color = colors[Math.floor(Math.random() * colors.length)];
                         firework.style.backgroundColor = color;
-
                         // Random size
                         const size = 5 + Math.random() * 10;
                         firework.style.width = `${size}px`;
                         firework.style.height = `${size}px`;
-
                         // Animation properties
                         const duration = 1 + Math.random() * 2;
                         const delay = Math.random() * 2;
@@ -2454,14 +3068,11 @@
                         firework.style.setProperty('--tx', tx);
                         firework.style.setProperty('--ty', ty);
                         firework.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                         document.body.appendChild(firework);
-
                         // Remove firework after animation
                         setTimeout(() => {
                             firework.remove();
                         }, (duration + delay) * 1000);
-
                         // Create explosion particles
                         setTimeout(() => {
                             createFireworkExplosion(x, y - 100 - Math.random() * 500, color);
@@ -2473,22 +3084,17 @@
         // Create firework explosion
         function createFireworkExplosion(x, y, color) {
             const numParticles = 50;
-
             for (let i = 0; i < numParticles; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-
                 particle.style.left = `${x}px`;
                 particle.style.top = `${y}px`;
-
                 // Use the firework color
                 particle.style.backgroundColor = color;
-
                 // Random size
                 const size = 3 + Math.random() * 5;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
-
                 // Animation properties
                 const duration = 1 + Math.random() * 2;
                 const delay = 0;
@@ -2499,9 +3105,7 @@
                 particle.style.setProperty('--tx', tx);
                 particle.style.setProperty('--ty', ty);
                 particle.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                 document.body.appendChild(particle);
-
                 // Remove particle after animation
                 setTimeout(() => {
                     particle.remove();
@@ -2511,67 +3115,50 @@
         // Create snow effect
         function createSnowEffect() {
             const numSnowflakes = 50;
-
             for (let i = 0; i < numSnowflakes; i++) {
                 const snowflake = document.createElement('div');
                 snowflake.className = 'snowflake';
-
                 // Random position at the top of the screen
                 const x = Math.random() * window.innerWidth;
                 const y = -10;
-
                 snowflake.style.left = `${x}px`;
                 snowflake.style.top = `${y}px`;
-
                 // Random size
                 const size = 5 + Math.random() * 10;
                 snowflake.style.width = `${size}px`;
                 snowflake.style.height = `${size}px`;
-
                 // Random animation duration
                 const duration = 10 + Math.random() * 20;
                 snowflake.style.animationDuration = `${duration}s`;
-
                 // Random animation delay
                 const delay = Math.random() * 5;
                 snowflake.style.animationDelay = `${delay}s`;
-
                 document.body.appendChild(snowflake);
-
                 // Remove snowflake after animation
                 setTimeout(() => {
                     snowflake.remove();
                 }, (duration + delay) * 1000);
             }
-
             // Continuously add new snowflakes
             setInterval(() => {
                 if (currentParticleEffect !== 'snow') return;
-
                 const snowflake = document.createElement('div');
                 snowflake.className = 'snowflake';
-
                 // Random position at the top of the screen
                 const x = Math.random() * window.innerWidth;
                 const y = -10;
-
                 snowflake.style.left = `${x}px`;
                 snowflake.style.top = `${y}px`;
-
                 // Random size
                 const size = 5 + Math.random() * 10;
                 snowflake.style.width = `${size}px`;
                 snowflake.style.height = `${size}px`;
-
                 // Random animation duration
                 const duration = 10 + Math.random() * 20;
                 snowflake.style.animationDuration = `${duration}s`;
-
                 // No delay for continuous snowfall
                 snowflake.style.animationDelay = '0s';
-
                 document.body.appendChild(snowflake);
-
                 // Remove snowflake after animation
                 setTimeout(() => {
                     snowflake.remove();
@@ -2582,30 +3169,23 @@
         function createConfettiEffect() {
             const numConfetti = 100;
             const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff8800', '#88ff00', '#0088ff'];
-
             for (let i = 0; i < numConfetti; i++) {
                 setTimeout(() => {
                     if (currentParticleEffect !== 'confetti') return;
-
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
-
                     // Random position at the top of the screen
                     const x = Math.random() * window.innerWidth;
                     const y = -10;
-
                     confetti.style.left = `${x}px`;
                     confetti.style.top = `${y}px`;
-
                     // Random color
                     const color = colors[Math.floor(Math.random() * colors.length)];
                     confetti.style.backgroundColor = color;
-
                     // Random size
                     const size = 5 + Math.random() * 10;
                     confetti.style.width = `${size}px`;
                     confetti.style.height = `${size}px`;
-
                     // Animation properties
                     const duration = 3 + Math.random() * 5;
                     const delay = Math.random() * 2;
@@ -2614,43 +3194,33 @@
                     confetti.style.setProperty('--tx', tx);
                     confetti.style.setProperty('--ty', ty);
                     confetti.style.animation = `confettiFall ${duration}s ${delay}s ease-out forwards`;
-
                     // Random rotation
                     const rotation = Math.random() * 360;
                     confetti.style.transform = `rotate(${rotation}deg)`;
-
                     document.body.appendChild(confetti);
-
                     // Remove confetti after animation
                     setTimeout(() => {
                         confetti.remove();
                     }, (duration + delay) * 1000);
                 }, i * 50);
             }
-
             // Continuously add new confetti
             setInterval(() => {
                 if (currentParticleEffect !== 'confetti') return;
-
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
-
                 // Random position at the top of the screen
                 const x = Math.random() * window.innerWidth;
                 const y = -10;
-
                 confetti.style.left = `${x}px`;
                 confetti.style.top = `${y}px`;
-
                 // Random color
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.backgroundColor = color;
-
                 // Random size
                 const size = 5 + Math.random() * 10;
                 confetti.style.width = `${size}px`;
                 confetti.style.height = `${size}px`;
-
                 // Animation properties
                 const duration = 3 + Math.random() * 5;
                 const delay = 0;
@@ -2659,13 +3229,10 @@
                 confetti.style.setProperty('--tx', tx);
                 confetti.style.setProperty('--ty', ty);
                 confetti.style.animation = `confettiFall ${duration}s ${delay}s ease-out forwards`;
-
                 // Random rotation
                 const rotation = Math.random() * 360;
                 confetti.style.transform = `rotate(${rotation}deg)`;
-
                 document.body.appendChild(confetti);
-
                 // Remove confetti after animation
                 setTimeout(() => {
                     confetti.remove();
@@ -2675,26 +3242,20 @@
         // Create bubbles effect
         function createBubblesEffect() {
             const numBubbles = 50;
-
             for (let i = 0; i < numBubbles; i++) {
                 const bubble = document.createElement('div');
                 bubble.className = 'bubble';
-
                 // Random position at the bottom of the screen
                 const x = Math.random() * window.innerWidth;
                 const y = window.innerHeight + 10;
-
                 bubble.style.left = `${x}px`;
                 bubble.style.top = `${y}px`;
-
                 // Random size
                 const size = 5 + Math.random() * 10;
                 bubble.style.width = `${size}px`;
                 bubble.style.height = `${size}px`;
-
                 // Random color (light blue)
                 bubble.style.backgroundColor = `rgba(173, 216, 230, ${Math.random() * 0.5 + 0.5})`;
-
                 // Animation properties
                 const duration = 5 + Math.random() * 10;
                 const delay = Math.random() * 5;
@@ -2703,37 +3264,28 @@
                 bubble.style.setProperty('--tx', tx);
                 bubble.style.setProperty('--ty', ty);
                 bubble.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                 document.body.appendChild(bubble);
-
                 // Remove bubble after animation
                 setTimeout(() => {
                     bubble.remove();
                 }, (duration + delay) * 1000);
             }
-
             // Continuously add new bubbles
             setInterval(() => {
                 if (currentParticleEffect !== 'bubbles') return;
-
                 const bubble = document.createElement('div');
                 bubble.className = 'bubble';
-
                 // Random position at the bottom of the screen
                 const x = Math.random() * window.innerWidth;
                 const y = window.innerHeight + 10;
-
                 bubble.style.left = `${x}px`;
                 bubble.style.top = `${y}px`;
-
                 // Random size
                 const size = 5 + Math.random() * 10;
                 bubble.style.width = `${size}px`;
                 bubble.style.height = `${size}px`;
-
                 // Random color (light blue)
                 bubble.style.backgroundColor = `rgba(173, 216, 230, ${Math.random() * 0.5 + 0.5})`;
-
                 // Animation properties
                 const duration = 5 + Math.random() * 10;
                 const delay = 0;
@@ -2742,9 +3294,7 @@
                 bubble.style.setProperty('--tx', tx);
                 bubble.style.setProperty('--ty', ty);
                 bubble.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                 document.body.appendChild(bubble);
-
                 // Remove bubble after animation
                 setTimeout(() => {
                     bubble.remove();
@@ -2754,75 +3304,56 @@
         // Create stars effect
         function createStarsEffect() {
             const numStars = 50;
-
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-
                 // Random position on the screen
                 const x = Math.random() * window.innerWidth;
                 const y = Math.random() * window.innerHeight;
-
                 star.style.left = `${x}px`;
                 star.style.top = `${y}px`;
-
                 // Random size
                 const size = 2 + Math.random() * 5;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
-
                 // Random color (yellow or white)
                 const color = Math.random() > 0.5 ? '#ffff00' : '#ffffff';
                 star.style.backgroundColor = color;
-
                 // Random animation duration
                 const duration = 2 + Math.random() * 5;
                 star.style.animationDuration = `${duration}s`;
-
                 // Random animation delay
                 const delay = Math.random() * 5;
                 star.style.animationDelay = `${delay}s`;
-
                 document.body.appendChild(star);
-
                 // Remove star after animation
                 setTimeout(() => {
                     star.remove();
                 }, (duration + delay) * 1000);
             }
-
             // Continuously add new stars
             setInterval(() => {
                 if (currentParticleEffect !== 'stars') return;
-
                 const star = document.createElement('div');
                 star.className = 'star';
-
                 // Random position on the screen
                 const x = Math.random() * window.innerWidth;
                 const y = Math.random() * window.innerHeight;
-
                 star.style.left = `${x}px`;
                 star.style.top = `${y}px`;
-
                 // Random size
                 const size = 2 + Math.random() * 5;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
-
                 // Random color (yellow or white)
                 const color = Math.random() > 0.5 ? '#ffff00' : '#ffffff';
                 star.style.backgroundColor = color;
-
                 // Random animation duration
                 const duration = 2 + Math.random() * 5;
                 star.style.animationDuration = `${duration}s`;
-
                 // No delay for continuous stars
                 star.style.animationDelay = '0s';
-
                 document.body.appendChild(star);
-
                 // Remove star after animation
                 setTimeout(() => {
                     star.remove();
@@ -2832,30 +3363,23 @@
         // Create hearts effect
         function createHeartsEffect() {
             const numHearts = 30;
-
             for (let i = 0; i < numHearts; i++) {
                 setTimeout(() => {
                     if (currentParticleEffect !== 'hearts') return;
-
                     const heart = document.createElement('div');
                     heart.className = 'heart';
-
                     // Random position at the top of the screen
                     const x = Math.random() * window.innerWidth;
                     const y = -10;
-
                     heart.style.left = `${x}px`;
                     heart.style.top = `${y}px`;
-
                     // Random size
                     const size = 10 + Math.random() * 20;
                     heart.style.width = `${size}px`;
                     heart.style.height = `${size}px`;
-
                     // Random color (red or pink)
                     const color = Math.random() > 0.5 ? '#ff0000' : '#ff66b2';
                     heart.style.backgroundColor = color;
-
                     // Animation properties
                     const duration = 3 + Math.random() * 5;
                     const delay = Math.random() * 2;
@@ -2864,43 +3388,33 @@
                     heart.style.setProperty('--tx', tx);
                     heart.style.setProperty('--ty', ty);
                     heart.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                     // Random rotation
                     const rotation = Math.random() * 360;
                     heart.style.transform = `rotate(${rotation}deg)`;
-
                     document.body.appendChild(heart);
-
                     // Remove heart after animation
                     setTimeout(() => {
                         heart.remove();
                     }, (duration + delay) * 1000);
                 }, i * 100);
             }
-
             // Continuously add new hearts
             setInterval(() => {
                 if (currentParticleEffect !== 'hearts') return;
-
                 const heart = document.createElement('div');
                 heart.className = 'heart';
-
                 // Random position at the top of the screen
                 const x = Math.random() * window.innerWidth;
                 const y = -10;
-
                 heart.style.left = `${x}px`;
                 heart.style.top = `${y}px`;
-
                 // Random size
                 const size = 10 + Math.random() * 20;
                 heart.style.width = `${size}px`;
                 heart.style.height = `${size}px`;
-
                 // Random color (red or pink)
                 const color = Math.random() > 0.5 ? '#ff0000' : '#ff66b2';
                 heart.style.backgroundColor = color;
-
                 // Animation properties
                 const duration = 3 + Math.random() * 5;
                 const delay = 0;
@@ -2909,13 +3423,10 @@
                 heart.style.setProperty('--tx', tx);
                 heart.style.setProperty('--ty', ty);
                 heart.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards`;
-
                 // Random rotation
                 const rotation = Math.random() * 360;
                 heart.style.transform = `rotate(${rotation}deg)`;
-
                 document.body.appendChild(heart);
-
                 // Remove heart after animation
                 setTimeout(() => {
                     heart.remove();
@@ -2925,7 +3436,6 @@
         // Update particle settings
         function updateParticleSettings() {
             const root = document.documentElement;
-
             // Update CSS variables based on input values
             root.style.setProperty('--particle-color', document.getElementById('particle-color').value);
             root.style.setProperty('--particle-size', `${document.getElementById('particle-size').value}px`);
@@ -2976,6 +3486,71 @@
         function hideExitConfirmation() {
             document.getElementById('exit-confirmation').style.display = 'none';
         }
+        // Save user profile
+        function saveProfile() {
+            // In a real application, you would save the profile data to a server or local storage
+            userProfile.username = document.getElementById('username').value;
+            userProfile.email = document.getElementById('email').value;
+            userProfile.password = document.getElementById('password').value;
+            userProfile.bio = document.getElementById('bio').value;
+            userProfile.location = document.getElementById('location').value;
+            userProfile.website = document.getElementById('website').value;
+            userProfile.profileVisibility = document.getElementById('profile-visibility').value;
+            userProfile.activityVisibility = document.getElementById('activity-visibility').value;
+            userProfile.searchVisibility = document.getElementById('search-visibility').value;
+            userProfile.emailNotifications = document.getElementById('email-notifications').value;
+            userProfile.pushNotifications = document.getElementById('push-notifications').value;
+            userProfile.inAppNotifications = document.getElementById('in-app-notifications').value;
+            // Handle avatar upload
+            const avatarInput = document.getElementById('avatar');
+            if (avatarInput.files && avatarInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    userProfile.avatar = e.target.result;
+                };
+                reader.readAsDataURL(avatarInput.files[0]);
+            }
+            alert('Profile saved successfully!');
+        }
+        // Delete user account
+        function deleteAccount() {
+            // In a real application, you would delete the user account from the server
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                alert('Account deleted successfully!');
+                // Clear user profile data
+                userProfile = {
+                    username: '',
+                    email: '',
+                    password: '',
+                    avatar: '',
+                    bio: '',
+                    location: '',
+                    website: '',
+                    profileVisibility: 'public',
+                    activityVisibility: 'public',
+                    searchVisibility: 'public',
+                    emailNotifications: 'on',
+                    pushNotifications: 'on',
+                    inAppNotifications: 'on'
+                };
+                // Reset form fields
+                document.getElementById('username').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('confirm-password').value = '';
+                document.getElementById('bio').value = '';
+                document.getElementById('location').value = '';
+                document.getElementById('website').value = '';
+                document.getElementById('profile-visibility').value = 'public';
+                document.getElementById('activity-visibility').value = 'public';
+                document.getElementById('search-visibility').value = 'public';
+                document.getElementById('email-notifications').value = 'on';
+                document.getElementById('push-notifications').value = 'on';
+                document.getElementById('in-app-notifications').value = 'on';
+                // Hide user profile screen
+                hideUserProfile();
+            }
+        }
         // Exit game
         function exitGame() {
             // Close all windows
@@ -2994,6 +3569,9 @@
             hideAchievements();
             hideLeaderboard();
             hideGameStats();
+            hideUserProfile();
+            hideCommunity();
+            hideAnalytics();
             // Clear particle effects
             clearParticleEffects();
             // Show loading screen again (simulate restart)
@@ -3032,4 +3610,3 @@
     </script>
 </body>
 </html>
-
