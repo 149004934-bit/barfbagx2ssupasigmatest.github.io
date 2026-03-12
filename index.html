@@ -63,14 +63,6 @@
             --metallic-blue: #1E90FF;
             --metallic-green: #32CD32;
             --metallic-red: #FF6347;
-            --silver-gradient: linear-gradient(135deg, #C0C0C0, #B87333, #FFD700);
-            --gold-gradient: linear-gradient(135deg, #FFD700, #B87333, #C0C0C0);
-            --silver-shadow: 0 4px 0 #5A3A1A;
-            --gold-shadow: 0 4px 0 #8B5A2B;
-            --silver-shadow-hover: 0 6px 0 #5A3A1A;
-            --gold-shadow-hover: 0 6px 0 #8B5A2B;
-            --silver-shadow-active: 0 2px 0 #5A3A1A;
-            --gold-shadow-active: 0 2px 0 #8B5A2B;
         }
         * {
             box-sizing: border-box;
@@ -111,29 +103,18 @@
             display: none;
         }
         #start-button {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-blue);
+            color: var(--taskbar-text);
             border: none;
             border-radius: 2px;
             padding: 5px 15px;
             margin-right: 10px;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: background 0.2s;
         }
         #start-button:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: translateY(-2px);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #start-button:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: translateY(0);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            background: var(--win-blue-light);
         }
         #taskbar-items {
             display: flex;
@@ -199,13 +180,11 @@
             z-index: 1001;
         }
         #start-menu-header {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--metallic-blue);
+            color: var(--metallic-gold);
             padding: 10px;
             font-weight: bold;
             border-bottom: 1px solid var(--metallic-copper);
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #start-menu-content {
             display: flex;
@@ -219,18 +198,13 @@
             border-bottom: none;
         }
         .start-menu-item {
-            color: var(--win-white);
+            color: var(--metallic-gold);
             padding: 8px 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--start-menu-item-bg);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: background 0.2s;
         }
         .start-menu-item:hover {
-            background: var(--gold-gradient);
-            color: var(--win-white);
-            transform: translateX(5px);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            background: var(--metallic-blue);
         }
         /* Game Icons */
         .game-icon {
@@ -242,23 +216,18 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
             user-select: none;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .game-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: var(--gl);
-            background: rgba(0, 0, 0, 0.5);
         }
         .game-icon img {
             width: 48px;
             height: 48px;
             margin-bottom: 5px;
             object-fit: contain;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
         .game-icon span {
             color: var(--win-white);
@@ -266,7 +235,6 @@
             text-align: center;
             padding: 0 5px;
             word-wrap: break-word;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         /* Window System */
         .window {
@@ -278,10 +246,9 @@
             display: none;
             flex-direction: column;
             z-index: 1002;
-            animation: windowOpen 0.5s ease-out;
+            animation: windowOpen 0.3s ease-out;
             min-width: 300px;
             min-height: 200px;
-            transform-origin: center;
         }
         @keyframes windowOpen {
             from { transform: scale(0.8); opacity: 0; }
@@ -317,25 +284,18 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: transform 0.2s ease;
-        }
-        .window-control:hover {
-            transform: scale(1.2);
         }
         .window-control-minimize {
-            background: var(--silver-gradient);
-            color: var(--win-white);
-            box-shadow: var(--silver-shadow);
+            background: var(--win-yellow);
+            color: var(--win-gray);
         }
         .window-control-maximize {
-            background: var(--silver-gradient);
-            color: var(--win-white);
-            box-shadow: var(--silver-shadow);
+            background: var(--win-green);
+            color: var(--win-gray);
         }
         .window-control-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
-            box-shadow: var(--silver-shadow);
+            background: var(--win-red);
+            color: var(--win-gray);
         }
         .window-content {
             padding: 10px;
@@ -363,7 +323,6 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
         }
         #search-input {
             background: var(--window-content-bg);
@@ -373,10 +332,6 @@
             padding: 10px;
             font-size: 16px;
             outline: none;
-            transition: background 0.3s ease;
-        }
-        #search-input:focus {
-            background: var(--win-gray-light);
         }
         #search-results {
             display: flex;
@@ -389,11 +344,10 @@
             color: var(--win-white);
             padding: 10px;
             cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.2s;
         }
         .search-result:hover {
             background: var(--win-blue);
-            transform: translateX(5px);
         }
         /* Options Menu */
         #options-menu {
@@ -408,17 +362,15 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
         }
         .options-item {
             color: var(--win-white);
             padding: 10px;
             cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.2s;
         }
         .options-item:hover {
             background: var(--win-blue);
-            transform: translateX(5px);
         }
         /* Exit Confirmation */
         #exit-confirmation {
@@ -436,7 +388,6 @@
             align-items: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             min-width: 300px;
-            animation: fadeIn 0.3s ease-out;
         }
         #exit-confirmation h3 {
             color: var(--win-white);
@@ -448,28 +399,17 @@
             gap: 10px;
         }
         #exit-confirmation-buttons button {
-            background: var(--silver-gradient);
+            background: var(--win-blue);
             color: var(--win-white);
             padding: 8px 20px;
             border: none;
             border-radius: 2px;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: background 0.2s;
         }
         #exit-confirmation-buttons button:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: translateY(-2px);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #exit-confirmation-buttons button:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: translateY(0);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            background: var(--win-blue-light);
         }
         /* Particle Effects */
         .particle {
@@ -481,7 +421,6 @@
             z-index: 1003;
             opacity: var(--particle-opacity);
             animation: particleMove var(--particle-speed) linear forwards;
-            box-shadow: 0 0 10px var(--particle-color);
         }
         @keyframes particleMove {
             0% {
@@ -503,7 +442,6 @@
             pointer-events: none;
             z-index: 1003;
             animation: snowfall linear infinite;
-            box-shadow: 0 0 10px white;
         }
         @keyframes snowfall {
             0% {
@@ -526,7 +464,6 @@
             pointer-events: none;
             z-index: 1003;
             animation: confettiFall linear infinite;
-            box-shadow: 0 0 10px currentColor;
         }
         @keyframes confettiFall {
             0% {
@@ -550,7 +487,6 @@
             pointer-events: none;
             z-index: 1003;
             animation: fireworkExplode linear forwards;
-            box-shadow: 0 0 10px currentColor;
         }
         @keyframes fireworkExplode {
             0% {
@@ -570,7 +506,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         #settings-window {
             position: absolute;
@@ -585,11 +521,6 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
-            animation: scaleIn 0.5s ease-out;
-        }
-        @keyframes scaleIn {
-            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
         #settings-header {
             background: var(--window-header-bg);
@@ -602,8 +533,8 @@
             align-items: center;
         }
         #settings-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -613,21 +544,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #settings-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #settings-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #settings-content {
             padding: 20px;
@@ -642,10 +558,6 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        .settings-section:hover {
-            transform: translateX(5px);
         }
         .settings-section h2 {
             color: var(--win-white);
@@ -670,11 +582,6 @@
             background: var(--win-gray);
             color: var(--win-white);
             font-size: 14px;
-            transition: background 0.3s ease;
-        }
-        .settings-option input:focus,
-        .settings-option select:focus {
-            background: var(--win-gray-light);
         }
         /* Credits Screen */
         #credits-screen {
@@ -684,7 +591,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         #credits-window {
             position: absolute;
@@ -699,7 +606,6 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
-            animation: scaleIn 0.5s ease-out;
         }
         #credits-header {
             background: var(--window-header-bg);
@@ -712,8 +618,8 @@
             align-items: center;
         }
         #credits-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -723,21 +629,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #credits-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #credits-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #credits-content {
             padding: 20px;
@@ -752,10 +643,6 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        .credits-section:hover {
-            transform: translateX(5px);
         }
         .credits-section h2 {
             color: var(--win-white);
@@ -777,7 +664,6 @@
             align-items: center;
             justify-content: center;
             z-index: 1005;
-            animation: fadeIn 0.5s ease-out;
         }
         #loading-logo {
             width: 100px;
@@ -786,15 +672,11 @@
             animation: pulse 2s infinite, rotate 10s linear infinite;
             background: url('https://i.imgur.com/windows-logo.png') no-repeat center center;
             background-size: contain;
-            filter: drop-shadow(0 0 10px var(--win-blue));
         }
         #loading-text {
             color: var(--win-white);
             font-size: 18px;
             margin-bottom: 10px;
-            text-shadow: 0 0 5px var(--win-blue);
-            position: relative;
-            z-index: 1006;
         }
         #minecraft-text {
             color: var(--minecraft-yellow);
@@ -803,8 +685,6 @@
             margin-bottom: 20px;
             text-shadow: 0 0 10px var(--minecraft-yellow);
             animation: textPulse 3s infinite;
-            position: relative;
-            z-index: 1006;
         }
         #loading-progress {
             width: 200px;
@@ -813,19 +693,16 @@
             border-radius: 5px;
             overflow: hidden;
             margin-bottom: 20px;
-            box-shadow: 0 0 5px var(--win-blue);
         }
         #loading-progress-bar {
             height: 100%;
-            background: var(--silver-gradient);
+            background: var(--win-blue);
             width: 0%;
             transition: width 0.3s;
-            box-shadow: 0 0 5px var(--win-blue);
         }
         #loading-status {
             color: var(--win-white);
             font-size: 14px;
-            text-shadow: 0 0 5px var(--win-blue);
         }
         #loading-animation {
             position: absolute;
@@ -837,9 +714,8 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: var(--silver-gradient);
+            background-color: var(--ac);
             animation: orbMove 5s infinite ease-in-out;
-            box-shadow: 0 0 10px var(--win-blue);
         }
         @keyframes orbMove {
             0%, 100% {
@@ -882,7 +758,6 @@
             align-items: center;
             justify-content: center;
             z-index: 1006;
-            animation: fadeIn 0.5s ease-out;
         }
         #goon-lagoon-title {
             font-family: 'Bangers', cursive;
@@ -919,7 +794,7 @@
             width: 300px;
         }
         .minecraft-button {
-            background: var(--silver-gradient);
+            background: linear-gradient(135deg, var(--minecraft-brown), var(--minecraft-light-brown));
             color: var(--win-white);
             border: none;
             border-radius: 4px;
@@ -927,21 +802,17 @@
             font-family: 'Minecraftia', sans-serif;
             font-size: 20px;
             cursor: pointer;
-            box-shadow: var(--silver-shadow);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 0 var(--minecraft-dark-brown);
+            transition: all 0.2s;
         }
         .minecraft-button:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            background: linear-gradient(135deg, var(--minecraft-light-brown), var(--minecraft-brown));
             transform: translateY(-2px);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            box-shadow: 0 6px 0 var(--minecraft-dark-brown);
         }
         .minecraft-button:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
             transform: translateY(0);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 0 var(--minecraft-dark-brown);
         }
         /* AI Chat Window */
         #ai-chat-window {
@@ -957,11 +828,6 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: slideIn 0.3s ease-out;
-        }
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
         }
         #ai-chat-header {
             background: var(--window-header-bg);
@@ -974,8 +840,8 @@
             align-items: center;
         }
         #ai-chat-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -985,21 +851,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #ai-chat-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #ai-chat-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #ai-chat-content {
             flex: 1;
@@ -1016,21 +867,18 @@
             max-width: 80%;
             word-wrap: break-word;
             animation: fadeIn 0.3s ease forwards;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
         .user-message {
             align-self: flex-end;
             background-color: #6200EA;
             color: white;
             border-top-left-radius: 0;
-            box-shadow: 0 0 5px #6200EA;
         }
         .assistant-message {
             align-self: flex-start;
             background-color: #E0E0E0;
             color: #212121;
             border-top-right-radius: 0;
-            box-shadow: 0 0 5px #E0E0E0;
         }
         #ai-chat-input {
             display: flex;
@@ -1045,14 +893,13 @@
             border: 1px solid #E0E0E0;
             border-radius: 20px;
             margin-right: 10px;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: border-color 0.3s;
             background: var(--window-content-bg);
             color: var(--win-white);
             outline: none;
         }
         #ai-chat-textarea:focus {
             border-color: #6200EA;
-            box-shadow: 0 0 5px #6200EA;
         }
         #ai-chat-send {
             padding: 10px 15px;
@@ -1063,12 +910,9 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 5px #6200EA;
         }
         #ai-chat-send:hover {
             background-color: #3700B3;
-            box-shadow: 0 0 10px #3700B3;
         }
         #ai-chat-send .material-icons {
             margin-right: 5px;
@@ -1102,7 +946,6 @@
             z-index: 1001;
             max-height: 80vh;
             overflow-y: auto;
-            animation: scaleIn 0.5s ease-out;
         }
         #achievements-header, #leaderboard-header, #game-stats-header {
             background: var(--window-header-bg);
@@ -1115,8 +958,8 @@
             align-items: center;
         }
         #achievements-close, #leaderboard-close, #game-stats-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1126,21 +969,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #achievements-close:hover, #leaderboard-close:hover, #game-stats-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #achievements-close:active, #leaderboard-close:active, #game-stats-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #achievements-content, #leaderboard-content, #game-stats-content {
             padding: 20px;
@@ -1157,29 +985,17 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            transition: transform 0.3s ease;
-        }
-        .achievement-item:hover, .leaderboard-item:hover, .game-stat-item:hover {
-            transform: translateX(5px);
         }
         .achievement-icon, .leaderboard-icon {
             width: 50px;
             height: 50px;
-            background: var(--silver-gradient);
+            background-color: var(--win-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--win-white);
             font-size: 24px;
-            box-shadow: var(--silver-shadow);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        .achievement-icon:hover, .leaderboard-icon:hover {
-            transform: scale(1.1);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
         .achievement-info, .leaderboard-info {
             flex: 1;
@@ -1209,7 +1025,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         #user-profile-window {
             position: absolute;
@@ -1224,7 +1040,6 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
-            animation: scaleIn 0.5s ease-out;
         }
         #user-profile-header {
             background: var(--window-header-bg);
@@ -1237,8 +1052,8 @@
             align-items: center;
         }
         #user-profile-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1248,21 +1063,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #user-profile-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #user-profile-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #user-profile-content {
             padding: 20px;
@@ -1277,10 +1077,6 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        .user-profile-section:hover {
-            transform: translateX(5px);
         }
         .user-profile-section h2 {
             color: var(--win-white);
@@ -1305,11 +1101,6 @@
             background: var(--win-gray);
             color: var(--win-white);
             font-size: 14px;
-            transition: background 0.3s ease;
-        }
-        .user-profile-option input:focus,
-        .user-profile-option select:focus {
-            background: var(--win-gray-light);
         }
         /* Community Screen */
         #community-screen {
@@ -1319,7 +1110,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         #community-window {
             position: absolute;
@@ -1334,7 +1125,6 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
-            animation: scaleIn 0.5s ease-out;
         }
         #community-header {
             background: var(--window-header-bg);
@@ -1347,8 +1137,8 @@
             align-items: center;
         }
         #community-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1358,21 +1148,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #community-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #community-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #community-content {
             padding: 20px;
@@ -1387,10 +1162,6 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        .community-section:hover {
-            transform: translateX(5px);
         }
         .community-section h2 {
             color: var(--win-white);
@@ -1403,10 +1174,6 @@
             border-radius: 2px;
             padding: 15px;
             margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
-        .community-post:hover {
-            transform: translateX(5px);
         }
         .community-post-header {
             display: flex;
@@ -1417,21 +1184,13 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--silver-gradient);
+            background-color: var(--win-blue);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--win-white);
             font-size: 20px;
             margin-right: 10px;
-            box-shadow: var(--silver-shadow);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        .community-post-avatar:hover {
-            transform: scale(1.1);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
         .community-post-user {
             color: var(--win-white);
@@ -1456,7 +1215,6 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            transition: color 0.3s ease;
         }
         .community-post-action:hover {
             color: var(--win-blue);
@@ -1469,10 +1227,6 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        #community-post-form:hover {
-            transform: translateX(5px);
         }
         #community-post-form h2 {
             color: var(--win-white);
@@ -1489,34 +1243,19 @@
             font-size: 14px;
             margin-bottom: 10px;
             min-height: 100px;
-            transition: background 0.3s ease;
-        }
-        #community-post-form textarea:focus {
-            background: var(--win-gray-light);
         }
         #community-post-form button {
-            background: var(--silver-gradient);
+            background: var(--win-blue);
             color: var(--win-white);
             padding: 8px 20px;
             border: none;
             border-radius: 2px;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: background 0.2s;
         }
         #community-post-form button:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: translateY(-2px);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #community-post-form button:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: translateY(0);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            background: var(--win-blue-light);
         }
         /* Analytics Screen */
         #analytics-screen {
@@ -1526,7 +1265,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         #analytics-window {
             position: absolute;
@@ -1541,7 +1280,6 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
-            animation: scaleIn 0.5s ease-out;
         }
         #analytics-header {
             background: var(--window-header-bg);
@@ -1554,8 +1292,8 @@
             align-items: center;
         }
         #analytics-close {
-            background: var(--silver-gradient);
-            color: var(--win-white);
+            background: var(--win-red);
+            color: var(--win-gray);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1565,21 +1303,6 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: var(--silver-shadow);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        #analytics-close:hover {
-            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
-            transform: scale(1.2);
-            box-shadow: var(--silver-shadow-hover);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-        #analytics-close:active {
-            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
-            transform: scale(1);
-            box-shadow: var(--silver-shadow-active);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #analytics-content {
             padding: 20px;
@@ -1594,10 +1317,6 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        .analytics-section:hover {
-            transform: translateX(5px);
         }
         .analytics-section h2 {
             color: var(--win-white);
@@ -1613,11 +1332,6 @@
             align-items: center;
             justify-content: center;
             color: var(--win-white);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        .analytics-chart:hover {
-            transform: scale(1.02);
         }
         .analytics-stats {
             display: flex;
@@ -1630,11 +1344,6 @@
             padding: 15px;
             flex: 1;
             min-width: 200px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        .analytics-stat:hover {
-            transform: scale(1.02);
         }
         .analytics-stat-title {
             color: var(--win-white);
@@ -1645,174 +1354,6 @@
             color: var(--win-blue);
             font-size: 24px;
             font-weight: bold;
-        }
-        /* Lightning Effect */
-        .lightning-effect {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1007;
-            display: none;
-        }
-        .lightning-bolt {
-            position: absolute;
-            width: 5px;
-            height: 50px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            animation: lightningFlash 0.5s ease-out forwards;
-        }
-        @keyframes lightningFlash {
-            0% {
-                opacity: 1;
-                transform: scaleY(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scaleY(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scaleY(1);
-            }
-        }
-        .lightning-trace {
-            position: absolute;
-            width: 2px;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
-            border-radius: 1px;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            animation: lightningTrace 1s ease-out forwards;
-        }
-        @keyframes lightningTrace {
-            0% {
-                opacity: 1;
-                transform: scaleY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: scaleY(1);
-            }
-        }
-        /* Transition Overlay */
-        #transition-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1008;
-            animation: fadeIn 0.5s ease-out;
-        }
-        #transition-text {
-            font-family: 'Bangers', cursive;
-            font-size: 64px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-            background: linear-gradient(90deg, #ff00cc, #3333ff, #00ccff, #00ff99, #ffcc00, #ff3333);
-            background-size: 400% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient 3s linear infinite, fadeOut 2s ease-out forwards;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        /* Neon Light Sign */
-        .neon-light {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Bangers', cursive;
-            font-size: 64px;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
-            animation: flicker 1.5s infinite alternate;
-            display: none;
-            z-index: 1009;
-        }
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-                opacity: 0.5;
-            }
-        }
-        /* Light Bulb Break Effect */
-        .light-bulb-break {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            background: url('https://i.imgur.com/light-bulb-break.png') no-repeat center center;
-            background-size: contain;
-            display: none;
-            z-index: 1010;
-            animation: bulbBreak 0.5s forwards;
-        }
-        @keyframes bulbBreak {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1.5);
-                opacity: 0;
-            }
-        }
-        /* Flash Effect */
-        .flash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            display: none;
-            z-index: 1011;
-            animation: flash 0.3s forwards;
-        }
-        @keyframes flash {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        /* Bubble Effect */
-        .bubble {
-            position: absolute;
-            width: var(--particle-size);
-            height: var(--particle-size);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1003;
-            opacity: var(--particle-opacity);
-            animation: particleMove var(--particle-speed) linear forwards;
-            box-shadow: 0 0 10px var(--particle-color);
-            background-color: rgba(173, 216, 230, 0.7);
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1859,7 +1400,7 @@
         <div id="start-menu-header">THE GOON LAGOON</div>
         <div id="start-menu-content">
             <div class="start-menu-section">
-                <div class="start-menu-item" onclick="showUserProfile()">**** Profile</div>
+                <div class="start-menu-item" onclick="showUserProfile()">User Profile</div>
                 <div class="start-menu-item" onclick="showSettings()">Settings</div>
                 <div class="start-menu-item" onclick="showCredits()">Credits</div>
                 <div class="start-menu-item" onclick="showAchievements()">Achievements</div>
@@ -1881,7 +1422,7 @@
     <!-- AI Chat Window -->
     <div id="ai-chat-window">
         <div id="ai-chat-header">
-            <span>** Assistant</span>
+            <span>AI Assistant</span>
             <div id="ai-chat-close" onclick="hideAIChat()">×</div>
         </div>
         <div id="ai-chat-content">
@@ -2122,7 +1663,7 @@
                         </select>
                     </div>
                     <div class="settings-option">
-                        <label for="screen-reader"Screen Reader:</label>
+                        <label for="screen-reader">Screen Reader:</label>
                         <select id="screen-reader">
                             <option value="off">Off</option>
                             <option value="on">On</option>
@@ -2145,13 +1686,13 @@
                     <p>BarfbagX2 - Lead Developer</p>
                     <p>BarfbagX2 - UI Designer</p>
                     <p>LITHO - Content Creator</p>
-                    <p>llamarider37 - idk hes just there</p>
+                    <p>BoogalooBunt - hes just there</p>
                 </div>
                 <div class="credits-section">
                     <h2>Special Thanks</h2>
                     <p>To all the players who have supported the Goon Lagoon community.</p>
                     <p>Thanks to the goobers who whined about the old stuff not workng</p>
-                    <p>Special thanks to everyone, this fuck ass site was made out of boredom and you guys made it a much bigger thing then what it was intended for and I will continue to expand and create with your love and support or sum so thank you all type shi no homo.</p>
+                    <p>Special thanks to everyone, this fuck ass site was made out of boredom and you guys made it a much bigger thing then what it was intended for and will continue to expand and grow with your love and support so thank you all type shi no homo.</p>
                 </div>
                 <div class="credits-section">
                     <h2>Contact</h2>
@@ -2161,7 +1702,7 @@
                 </div>
                 <div class="credits-section">
                     <h2>Version Information</h2>
-                    <p>The GOON LAGOON - Supa Dupa Edition</p>
+                    <p>THE GOON LAGOON - Supa Dupa Edition</p>
                     <p>Version: 188.0.0</p>
                     <p>Build Date: March 2026</p>
                     <p>Copyright © 2026 BarfbagX2. All rights reserved.</p>
@@ -2273,9 +1814,9 @@
                     </div>
                 </div>
                 <div class="user-profile-section">
-                    <h2>User-Profile Settings</h2>
+                    <h2>Notification Settings</h2>
                     <div class="user-profile-option">
-                        <label for="email-notifications">Enable Notifications:</label>
+                        <label for="email-notifications">Email Notifications:</label>
                         <select id="email-notifications">
                             <option value="on">On</option>
                             <option value="off">Off</option>
@@ -2289,7 +1830,7 @@
                         </select>
                     </div>
                     <div class="user-profile-option">
-                        <label for="in-app-notifications">In-Game Notifications:</label>
+                        <label for="in-app-notifications">In-App Notifications:</label>
                         <select id="in-app-notifications">
                             <option value="on">On</option>
                             <option value="off">Off</option>
@@ -2339,7 +1880,7 @@
             </div>
             <div id="analytics-content">
                 <div class="analytics-section">
-                    <h2>**** Playtime</h2>
+                    <h2>Game Playtime</h2>
                     <div class="analytics-chart" id="game-playtime-chart">
                         <!-- Game playtime chart will be added here dynamically -->
                     </div>
@@ -2382,18 +1923,6 @@
             <button onclick="hideExitConfirmation()">No</button>
         </div>
     </div>
-    <!-- Lightning Effect -->
-    <div id="lightning-effect"></div>
-    <!-- Transition Overlay -->
-    <div id="transition-overlay">
-        <div id="transition-text">BX2</div>
-    </div>
-    <!-- Neon Light Sign -->
-    <div class="neon-light" id="neon-light">BarfbagX2</div>
-    <!-- Light Bulb Break Effect -->
-    <div class="light-bulb-break" id="light-bulb-break"></div>
-    <!-- Flash Effect -->
-    <div class="flash" id="flash"></div>
     <script>
         // Game data with actual images
         const games = [
@@ -2578,7 +2107,7 @@
             document.getElementById('search-button').addEventListener('click', toggleSearchBar);
             document.getElementById('ai-chat-button').addEventListener('click', toggleAIChat);
             // Add event listeners for Minecraft menu buttons
-            document.getElementById('start-game').addEventListener('click', startGameTransition);
+            document.getElementById('start-game').addEventListener('click', startGame);
             document.getElementById('settings-button').addEventListener('click', (e) => {
                 e.stopPropagation();
                 showSettingsFromMenu();
@@ -2735,11 +2264,11 @@
             const achievementsContent = document.getElementById('achievements-content');
             // Sample achievements data
             const achievements = [
-                { title: 'First Steps', description: 'Play your first game.', icon: '🏆' },
+                { title: 'First Steps', description: 'Complete your first game.', icon: '🏆' },
                 { title: 'Explorer', description: 'Play 10 different games.', icon: '🌍' },
                 { title: 'Master', description: 'Achieve a high score in a game.', icon: '🏅' },
                 { title: 'Collector', description: 'Collect all game achievements.', icon: '🎁' },
-                { title: 'Speedrunner', description: 'Complete a game in under 60 seconcds.', icon: '⏱️' }
+                { title: 'Speedrunner', description: 'Complete a game in record time.', icon: '⏱️' }
             ];
             // Display achievements
             achievements.forEach(achievement => {
@@ -2909,10 +2438,6 @@
                 } else {
                     loadingStatus.textContent = "Finalizing setup...";
                 }
-                // Create bubbles effect based on loading progress
-                if (progress < 100) {
-                    createBubblesEffect(progress);
-                }
                 if (progress >= 100) {
                     clearInterval(loadingInterval);
                     setTimeout(() => {
@@ -2921,72 +2446,6 @@
                     }, 500);
                 }
             }, 200);
-        }
-        // Create bubbles effect based on loading progress
-        function createBubblesEffect(progress) {
-            const numBubbles = Math.floor(progress / 2);
-            const loadingAnimation = document.getElementById('loading-animation');
-            // Clear existing bubbles
-            const existingBubbles = document.querySelectorAll('.bubble');
-            existingBubbles.forEach(bubble => bubble.remove());
-            // Create new bubbles
-            for (let i = 0; i < numBubbles; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                // Random position at the bottom of the screen
-                const x = Math.random() * window.innerWidth;
-                const y = window.innerHeight + 10;
-                bubble.style.left = `${x}px`;
-                bubble.style.top = `${y}px`;
-                // Random size
-                const size = 5 + Math.random() * 10;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                // Random color (light blue)
-                bubble.style.backgroundColor = `rgba(173, 216, 230, ${Math.random() * 0.5 + 0.5})`;
-                // Animation properties based on loading progress
-                const duration = 5 + Math.random() * 10;
-                const delay = Math.random() * 5;
-                const tx = (Math.random() - 0.5) * 50;
-                const ty = -100 - Math.random() * 500;
-                bubble.style.setProperty('--tx', tx);
-                bubble.style.setProperty('--ty', ty);
-                // Adjust spin speed based on loading progress
-                const spinSpeed = 1 + (progress / 100) * 5;
-                bubble.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards, spin ${spinSpeed}s linear infinite`;
-                loadingAnimation.appendChild(bubble);
-                // Remove bubble after animation
-                setTimeout(() => {
-                    bubble.remove();
-                }, (duration + delay) * 1000);
-            }
-        }
-        // Start the game with transition effect
-        function startGameTransition() {
-            // Hide the minecraft menu
-            document.getElementById('minecraft-menu').style.display = 'none';
-            // Show the neon light sign
-            const neonLight = document.getElementById('neon-light');
-            neonLight.style.display = 'block';
-            // After 3 seconds, show the bulb break effect and flash
-            setTimeout(() => {
-                // Hide the neon light
-                neonLight.style.display = 'none';
-                // Show the bulb break effect
-                const bulbBreak = document.getElementById('light-bulb-break');
-                bulbBreak.style.display = 'block';
-                // Show the flash effect
-                const flash = document.getElementById('flash');
-                flash.style.display = 'block';
-                // After the animation completes, hide everything and show the desktop
-                setTimeout(() => {
-                    bulbBreak.style.display = 'none';
-                    flash.style.display = 'none';
-                    // Show the desktop
-                    document.getElementById('desktop').style.display = 'block';
-                    document.getElementById('taskbar').style.display = 'flex';
-                }, 500);
-            }, 3000);
         }
         // Start the game (show desktop)
         function startGame() {
@@ -3091,23 +2550,23 @@
             // Sample community posts data
             const samplePosts = [
                 {
-                    user: 'LadiesMan217',
+                    user: 'Player1',
                     time: '2 hours ago',
-                    content: 'im lowkirky gay asf',
+                    content: 'Just finished the new level in Geometry Dash! It was so hard but so satisfying when I finally beat it!',
                     likes: 15,
                     comments: 3
                 },
                 {
-                    user: 'NoobMaster69',
+                    user: 'Player2',
                     time: '5 hours ago',
-                    content: 'Anyone else playing Rivals right now? I need a team for the next match.',
+                    content: 'Anyone else playing Rivals right now? I need a team for the next match!',
                     likes: 8,
                     comments: 2
                 },
                 {
-                    user: 'BarfbagX2',
+                    user: 'Player3',
                     time: '1 day ago',
-                    content: 'gforce now emulator coming soon trust',
+                    content: 'I just discovered this amazing game called "Ultrakill" and I\'m obsessed. The graphics and gameplay are next level!',
                     likes: 22,
                     comments: 5
                 }
@@ -3158,9 +2617,9 @@
             // Sample analytics data
             const analyticsData = {
                 totalGamesPlayed: 42,
-                totalPlaytime: 122.5,
+                totalPlaytime: 12.5,
                 favoriteGame: 'Geometry Dash',
-                mostPlayedGame: 'Ultrakill'
+                mostPlayedGame: 'Rivals'
             };
             // Update analytics display
             document.getElementById('total-games-played').textContent = analyticsData.totalGamesPlayed;
@@ -4151,3 +3610,4 @@
     </script>
 </body>
 </html>
+
