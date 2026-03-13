@@ -63,6 +63,14 @@
             --metallic-blue: #1E90FF;
             --metallic-green: #32CD32;
             --metallic-red: #FF6347;
+            --silver-gradient: linear-gradient(135deg, #C0C0C0, #B87333, #FFD700);
+            --gold-gradient: linear-gradient(135deg, #FFD700, #B87333, #C0C0C0);
+            --silver-shadow: 0 4px 0 #5A3A1A;
+            --gold-shadow: 0 4px 0 #8B5A2B;
+            --silver-shadow-hover: 0 6px 0 #5A3A1A;
+            --gold-shadow-hover: 0 6px 0 #8B5A2B;
+            --silver-shadow-active: 0 2px 0 #5A3A1A;
+            --gold-shadow-active: 0 2px 0 #8B5A2B;
         }
         * {
             box-sizing: border-box;
@@ -81,7 +89,6 @@
             display: flex;
             flex-direction: column;
         }
-        /* Desktop */
         #desktop {
             position: relative;
             flex: 1;
@@ -90,7 +97,6 @@
             background-size: var(--desktop-bg-size);
             display: none;
         }
-        /* Taskbar */
         #taskbar {
             background: var(--taskbar-bg);
             height: 40px;
@@ -103,18 +109,29 @@
             display: none;
         }
         #start-button {
-            background: var(--win-blue);
-            color: var(--taskbar-text);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             border: none;
             border-radius: 2px;
             padding: 5px 15px;
             margin-right: 10px;
             cursor: pointer;
             font-weight: bold;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #start-button:hover {
-            background: var(--win-blue-light);
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: translateY(-2px);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #start-button:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: translateY(0);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #taskbar-items {
             display: flex;
@@ -165,7 +182,6 @@
         #ai-chat-button:hover {
             background-color: var(--win-green-light);
         }
-        /* Start Menu */
         #start-menu {
             position: absolute;
             bottom: 40px;
@@ -180,11 +196,13 @@
             z-index: 1001;
         }
         #start-menu-header {
-            background: var(--metallic-blue);
-            color: var(--metallic-gold);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             padding: 10px;
             font-weight: bold;
             border-bottom: 1px solid var(--metallic-copper);
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #start-menu-content {
             display: flex;
@@ -198,15 +216,19 @@
             border-bottom: none;
         }
         .start-menu-item {
-            color: var(--metallic-gold);
+            color: var(--win-white);
             padding: 8px 15px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            background: var(--start-menu-item-bg);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         .start-menu-item:hover {
-            background: var(--metallic-blue);
+            background: var(--gold-gradient);
+            color: var(--win-white);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
-        /* Game Icons */
         .game-icon {
             position: absolute;
             width: 80px;
@@ -216,18 +238,23 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             user-select: none;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .game-icon:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
             box-shadow: var(--gl);
+            background: rgba(0, 0, 0, 0.5);
         }
         .game-icon img {
             width: 48px;
             height: 48px;
             margin-bottom: 5px;
             object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
         .game-icon span {
             color: var(--win-white);
@@ -235,8 +262,8 @@
             text-align: center;
             padding: 0 5px;
             word-wrap: break-word;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
-        /* Window System */
         .window {
             position: absolute;
             background: var(--window-bg);
@@ -246,13 +273,20 @@
             display: none;
             flex-direction: column;
             z-index: 1002;
-            animation: windowOpen 0.3s ease-out;
+            animation: windowOpen 0.5s ease-out;
             min-width: 300px;
             min-height: 200px;
+            transform-origin: center;
         }
         @keyframes windowOpen {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
         .window-header {
             background: var(--window-header-bg);
@@ -284,18 +318,30 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+        .window-control:hover {
+            transform: scale(1.2);
+        }
+        .window-control-refresh {
+            background: var(--silver-gradient);
+            color: var(--win-white);
+            box-shadow: var(--silver-shadow);
         }
         .window-control-minimize {
-            background: var(--win-yellow);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
+            box-shadow: var(--silver-shadow);
         }
         .window-control-maximize {
-            background: var(--win-green);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
+            box-shadow: var(--silver-shadow);
         }
         .window-control-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
+            box-shadow: var(--silver-shadow);
         }
         .window-content {
             padding: 10px;
@@ -309,7 +355,6 @@
             border: none;
             background: var(--window-content-bg);
         }
-        /* Search Bar */
         #search-bar {
             position: absolute;
             bottom: 40px;
@@ -323,6 +368,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
+            animation: fadeIn 0.3s ease-out;
         }
         #search-input {
             background: var(--window-content-bg);
@@ -332,6 +378,10 @@
             padding: 10px;
             font-size: 16px;
             outline: none;
+            transition: background 0.3s ease;
+        }
+        #search-input:focus {
+            background: var(--win-gray-light);
         }
         #search-results {
             display: flex;
@@ -344,12 +394,12 @@
             color: var(--win-white);
             padding: 10px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
         .search-result:hover {
             background: var(--win-blue);
+            transform: translateX(5px);
         }
-        /* Options Menu */
         #options-menu {
             position: absolute;
             bottom: 40px;
@@ -362,17 +412,18 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
+            animation: fadeIn 0.3s ease-out;
         }
         .options-item {
             color: var(--win-white);
             padding: 10px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
         .options-item:hover {
             background: var(--win-blue);
+            transform: translateX(5px);
         }
-        /* Exit Confirmation */
         #exit-confirmation {
             position: fixed;
             top: 50%;
@@ -388,6 +439,7 @@
             align-items: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             min-width: 300px;
+            animation: fadeIn 0.3s ease-out;
         }
         #exit-confirmation h3 {
             color: var(--win-white);
@@ -399,19 +451,29 @@
             gap: 10px;
         }
         #exit-confirmation-buttons button {
-            background: var(--win-blue);
+            background: var(--silver-gradient);
             color: var(--win-white);
             padding: 8px 20px;
             border: none;
             border-radius: 2px;
             cursor: pointer;
             font-weight: bold;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #exit-confirmation-buttons button:hover {
-            background: var(--win-blue-light);
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: translateY(-2px);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
-        /* Particle Effects */
+        #exit-confirmation-buttons button:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: translateY(0);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
         .particle {
             position: absolute;
             width: var(--particle-size);
@@ -421,6 +483,7 @@
             z-index: 1003;
             opacity: var(--particle-opacity);
             animation: particleMove var(--particle-speed) linear forwards;
+            box-shadow: 0 0 10px var(--particle-color);
         }
         @keyframes particleMove {
             0% {
@@ -432,7 +495,6 @@
                 opacity: 0;
             }
         }
-        /* Snow Effect */
         .snowflake {
             position: absolute;
             width: 10px;
@@ -442,6 +504,7 @@
             pointer-events: none;
             z-index: 1003;
             animation: snowfall linear infinite;
+            box-shadow: 0 0 10px white;
         }
         @keyframes snowfall {
             0% {
@@ -456,7 +519,6 @@
                 opacity: 0;
             }
         }
-        /* Confetti Effect */
         .confetti {
             position: absolute;
             width: 10px;
@@ -464,6 +526,7 @@
             pointer-events: none;
             z-index: 1003;
             animation: confettiFall linear infinite;
+            box-shadow: 0 0 10px currentColor;
         }
         @keyframes confettiFall {
             0% {
@@ -478,7 +541,6 @@
                 opacity: 0;
             }
         }
-        /* Fireworks Effect */
         .firework {
             position: absolute;
             width: 5px;
@@ -487,6 +549,7 @@
             pointer-events: none;
             z-index: 1003;
             animation: fireworkExplode linear forwards;
+            box-shadow: 0 0 10px currentColor;
         }
         @keyframes fireworkExplode {
             0% {
@@ -498,7 +561,6 @@
                 opacity: 0;
             }
         }
-        /* Settings Screen */
         #settings-screen {
             position: fixed;
             inset: 0;
@@ -506,7 +568,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
         #settings-window {
             position: absolute;
@@ -521,6 +583,17 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
+            animation: scaleIn 0.5s ease-out;
+        }
+        @keyframes scaleIn {
+            from {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
         }
         #settings-header {
             background: var(--window-header-bg);
@@ -533,8 +606,8 @@
             align-items: center;
         }
         #settings-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -544,6 +617,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #settings-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #settings-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #settings-content {
             padding: 20px;
@@ -558,6 +646,10 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        .settings-section:hover {
+            transform: translateX(5px);
         }
         .settings-section h2 {
             color: var(--win-white);
@@ -573,8 +665,7 @@
             color: var(--win-white);
             font-size: 14px;
         }
-        .settings-option input,
-        .settings-option select {
+        .settings-option input, .settings-option select {
             width: 100%;
             padding: 8px;
             border: 1px solid var(--win-gray-lighter);
@@ -582,8 +673,11 @@
             background: var(--win-gray);
             color: var(--win-white);
             font-size: 14px;
+            transition: background 0.3s ease;
         }
-        /* Credits Screen */
+        .settings-option input:focus, .settings-option select:focus {
+            background: var(--win-gray-light);
+        }
         #credits-screen {
             position: fixed;
             inset: 0;
@@ -591,7 +685,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
         #credits-window {
             position: absolute;
@@ -606,6 +700,7 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
+            animation: scaleIn 0.5s ease-out;
         }
         #credits-header {
             background: var(--window-header-bg);
@@ -618,8 +713,8 @@
             align-items: center;
         }
         #credits-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -629,6 +724,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #credits-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #credits-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #credits-content {
             padding: 20px;
@@ -643,6 +753,10 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        .credits-section:hover {
+            transform: translateX(5px);
         }
         .credits-section h2 {
             color: var(--win-white);
@@ -654,7 +768,6 @@
             margin-bottom: 10px;
             line-height: 1.5;
         }
-        /* Loading Screen */
         #loading-screen {
             position: fixed;
             inset: 0;
@@ -664,6 +777,7 @@
             align-items: center;
             justify-content: center;
             z-index: 1005;
+            animation: fadeIn 0.5s ease-out;
         }
         #loading-logo {
             width: 100px;
@@ -672,11 +786,15 @@
             animation: pulse 2s infinite, rotate 10s linear infinite;
             background: url('https://i.imgur.com/windows-logo.png') no-repeat center center;
             background-size: contain;
+            filter: drop-shadow(0 0 10px var(--win-blue));
         }
         #loading-text {
             color: var(--win-white);
             font-size: 18px;
             margin-bottom: 10px;
+            text-shadow: 0 0 5px var(--win-blue);
+            position: relative;
+            z-index: 1006;
         }
         #minecraft-text {
             color: var(--minecraft-yellow);
@@ -685,6 +803,8 @@
             margin-bottom: 20px;
             text-shadow: 0 0 10px var(--minecraft-yellow);
             animation: textPulse 3s infinite;
+            position: relative;
+            z-index: 1006;
         }
         #loading-progress {
             width: 200px;
@@ -693,16 +813,19 @@
             border-radius: 5px;
             overflow: hidden;
             margin-bottom: 20px;
+            box-shadow: 0 0 5px var(--win-blue);
         }
         #loading-progress-bar {
             height: 100%;
-            background: var(--win-blue);
+            background: var(--silver-gradient);
             width: 0%;
             transition: width 0.3s;
+            box-shadow: 0 0 5px var(--win-blue);
         }
         #loading-status {
             color: var(--win-white);
             font-size: 14px;
+            text-shadow: 0 0 5px var(--win-blue);
         }
         #loading-animation {
             position: absolute;
@@ -714,8 +837,9 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: var(--ac);
+            background: var(--silver-gradient);
             animation: orbMove 5s infinite ease-in-out;
+            box-shadow: 0 0 10px var(--win-blue);
         }
         @keyframes orbMove {
             0%, 100% {
@@ -732,22 +856,39 @@
             }
         }
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
         }
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
         @keyframes textPulse {
-            0%, 100% { text-shadow: 0 0 10px var(--minecraft-yellow); }
-            50% { text-shadow: 0 0 20px var(--minecraft-yellow), 0 0 30px var(--minecraft-yellow); }
+            0%, 100% {
+                text-shadow: 0 0 10px var(--minecraft-yellow);
+            }
+            50% {
+                text-shadow: 0 0 20px var(--minecraft-yellow), 0 0 30px var(--minecraft-yellow);
+            }
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-        /* Minecraft Start Menu */
         #minecraft-menu {
             position: fixed;
             inset: 0;
@@ -758,6 +899,7 @@
             align-items: center;
             justify-content: center;
             z-index: 1006;
+            animation: fadeIn 0.5s ease-out;
         }
         #goon-lagoon-title {
             font-family: 'Bangers', cursive;
@@ -775,9 +917,15 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         #minecraft-phrase {
             font-family: 'Minecraftia', sans-serif;
@@ -794,7 +942,7 @@
             width: 300px;
         }
         .minecraft-button {
-            background: linear-gradient(135deg, var(--minecraft-brown), var(--minecraft-light-brown));
+            background: var(--silver-gradient);
             color: var(--win-white);
             border: none;
             border-radius: 4px;
@@ -802,19 +950,22 @@
             font-family: 'Minecraftia', sans-serif;
             font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 0 var(--minecraft-dark-brown);
-            transition: all 0.2s;
+            box-shadow: var(--silver-shadow);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         .minecraft-button:hover {
-            background: linear-gradient(135deg, var(--minecraft-light-brown), var(--minecraft-brown));
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
             transform: translateY(-2px);
-            box-shadow: 0 6px 0 var(--minecraft-dark-brown);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
         .minecraft-button:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
             transform: translateY(0);
-            box-shadow: 0 2px 0 var(--minecraft-dark-brown);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
-        /* AI Chat Window */
         #ai-chat-window {
             position: fixed;
             bottom: 40px;
@@ -828,6 +979,17 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
         #ai-chat-header {
             background: var(--window-header-bg);
@@ -840,8 +1002,8 @@
             align-items: center;
         }
         #ai-chat-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -851,6 +1013,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #ai-chat-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #ai-chat-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #ai-chat-content {
             flex: 1;
@@ -867,18 +1044,21 @@
             max-width: 80%;
             word-wrap: break-word;
             animation: fadeIn 0.3s ease forwards;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
         .user-message {
             align-self: flex-end;
             background-color: #6200EA;
             color: white;
             border-top-left-radius: 0;
+            box-shadow: 0 0 5px #6200EA;
         }
         .assistant-message {
             align-self: flex-start;
             background-color: #E0E0E0;
             color: #212121;
             border-top-right-radius: 0;
+            box-shadow: 0 0 5px #E0E0E0;
         }
         #ai-chat-input {
             display: flex;
@@ -893,13 +1073,14 @@
             border: 1px solid #E0E0E0;
             border-radius: 20px;
             margin-right: 10px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
             background: var(--window-content-bg);
             color: var(--win-white);
             outline: none;
         }
         #ai-chat-textarea:focus {
             border-color: #6200EA;
+            box-shadow: 0 0 5px #6200EA;
         }
         #ai-chat-send {
             padding: 10px 15px;
@@ -910,9 +1091,12 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px #6200EA;
         }
         #ai-chat-send:hover {
             background-color: #3700B3;
+            box-shadow: 0 0 10px #3700B3;
         }
         #ai-chat-send .material-icons {
             margin-right: 5px;
@@ -927,10 +1111,13 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        /* Achievements and Leaderboard Menus */
         #achievements-menu, #leaderboard-menu, #game-stats-menu {
             position: fixed;
             top: 50%;
@@ -946,6 +1133,7 @@
             z-index: 1001;
             max-height: 80vh;
             overflow-y: auto;
+            animation: scaleIn 0.5s ease-out;
         }
         #achievements-header, #leaderboard-header, #game-stats-header {
             background: var(--window-header-bg);
@@ -958,8 +1146,8 @@
             align-items: center;
         }
         #achievements-close, #leaderboard-close, #game-stats-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -969,6 +1157,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #achievements-close:hover, #leaderboard-close:hover, #game-stats-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #achievements-close:active, #leaderboard-close:active, #game-stats-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #achievements-content, #leaderboard-content, #game-stats-content {
             padding: 20px;
@@ -985,17 +1188,29 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            transition: transform 0.3s ease;
+        }
+        .achievement-item:hover, .leaderboard-item:hover, .game-stat-item:hover {
+            transform: translateX(5px);
         }
         .achievement-icon, .leaderboard-icon {
             width: 50px;
             height: 50px;
-            background-color: var(--win-blue);
+            background: var(--silver-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--win-white);
             font-size: 24px;
+            box-shadow: var(--silver-shadow);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .achievement-icon:hover, .leaderboard-icon:hover {
+            transform: scale(1.1);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
         .achievement-info, .leaderboard-info {
             flex: 1;
@@ -1017,7 +1232,6 @@
             color: var(--win-white);
             margin-left: auto;
         }
-        /* User Profile Screen */
         #user-profile-screen {
             position: fixed;
             inset: 0;
@@ -1025,7 +1239,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
         #user-profile-window {
             position: absolute;
@@ -1040,6 +1254,7 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
+            animation: scaleIn 0.5s ease-out;
         }
         #user-profile-header {
             background: var(--window-header-bg);
@@ -1052,8 +1267,8 @@
             align-items: center;
         }
         #user-profile-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1063,6 +1278,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #user-profile-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #user-profile-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #user-profile-content {
             padding: 20px;
@@ -1077,6 +1307,10 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        .user-profile-section:hover {
+            transform: translateX(5px);
         }
         .user-profile-section h2 {
             color: var(--win-white);
@@ -1092,8 +1326,7 @@
             color: var(--win-white);
             font-size: 14px;
         }
-        .user-profile-option input,
-        .user-profile-option select {
+        .user-profile-option input, .user-profile-option select {
             width: 100%;
             padding: 8px;
             border: 1px solid var(--win-gray-lighter);
@@ -1101,8 +1334,11 @@
             background: var(--win-gray);
             color: var(--win-white);
             font-size: 14px;
+            transition: background 0.3s ease;
         }
-        /* Community Screen */
+        .user-profile-option input:focus, .user-profile-option select:focus {
+            background: var(--win-gray-light);
+        }
         #community-screen {
             position: fixed;
             inset: 0;
@@ -1110,7 +1346,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
         #community-window {
             position: absolute;
@@ -1125,6 +1361,7 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
+            animation: scaleIn 0.5s ease-out;
         }
         #community-header {
             background: var(--window-header-bg);
@@ -1137,8 +1374,8 @@
             align-items: center;
         }
         #community-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1148,6 +1385,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #community-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #community-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #community-content {
             padding: 20px;
@@ -1162,6 +1414,10 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        .community-section:hover {
+            transform: translateX(5px);
         }
         .community-section h2 {
             color: var(--win-white);
@@ -1174,6 +1430,10 @@
             border-radius: 2px;
             padding: 15px;
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .community-post:hover {
+            transform: translateX(5px);
         }
         .community-post-header {
             display: flex;
@@ -1184,13 +1444,21 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--win-blue);
+            background: var(--silver-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--win-white);
             font-size: 20px;
             margin-right: 10px;
+            box-shadow: var(--silver-shadow);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .community-post-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
         .community-post-user {
             color: var(--win-white);
@@ -1215,6 +1483,7 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+            transition: color 0.3s ease;
         }
         .community-post-action:hover {
             color: var(--win-blue);
@@ -1227,6 +1496,10 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        #community-post-form:hover {
+            transform: translateX(5px);
         }
         #community-post-form h2 {
             color: var(--win-white);
@@ -1243,21 +1516,35 @@
             font-size: 14px;
             margin-bottom: 10px;
             min-height: 100px;
+            transition: background 0.3s ease;
+        }
+        #community-post-form textarea:focus {
+            background: var(--win-gray-light);
         }
         #community-post-form button {
-            background: var(--win-blue);
+            background: var(--silver-gradient);
             color: var(--win-white);
             padding: 8px 20px;
             border: none;
             border-radius: 2px;
             cursor: pointer;
             font-weight: bold;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #community-post-form button:hover {
-            background: var(--win-blue-light);
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: translateY(-2px);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
-        /* Analytics Screen */
+        #community-post-form button:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: translateY(0);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
         #analytics-screen {
             position: fixed;
             inset: 0;
@@ -1265,7 +1552,7 @@
             display: none;
             flex-direction: column;
             z-index: 1001;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
         #analytics-window {
             position: absolute;
@@ -1280,6 +1567,7 @@
             display: flex;
             flex-direction: column;
             max-height: 80vh;
+            animation: scaleIn 0.5s ease-out;
         }
         #analytics-header {
             background: var(--window-header-bg);
@@ -1292,8 +1580,8 @@
             align-items: center;
         }
         #analytics-close {
-            background: var(--win-red);
-            color: var(--win-gray);
+            background: var(--silver-gradient);
+            color: var(--win-white);
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -1303,6 +1591,21 @@
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--silver-shadow);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        #analytics-close:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: scale(1.2);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        #analytics-close:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: scale(1);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         #analytics-content {
             padding: 20px;
@@ -1317,6 +1620,10 @@
             border: var(--window-border);
             border-radius: 2px;
             padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        .analytics-section:hover {
+            transform: translateX(5px);
         }
         .analytics-section h2 {
             color: var(--win-white);
@@ -1332,6 +1639,11 @@
             align-items: center;
             justify-content: center;
             color: var(--win-white);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .analytics-chart:hover {
+            transform: scale(1.02);
         }
         .analytics-stats {
             display: flex;
@@ -1344,6 +1656,11 @@
             padding: 15px;
             flex: 1;
             min-width: 200px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .analytics-stat:hover {
+            transform: scale(1.02);
         }
         .analytics-stat-title {
             color: var(--win-white);
@@ -1355,10 +1672,230 @@
             font-size: 24px;
             font-weight: bold;
         }
+        .lightning-effect {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1007;
+            display: none;
+        }
+        .lightning-bolt {
+            position: absolute;
+            width: 5px;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: lightningFlash 0.5s ease-out forwards;
+        }
+        @keyframes lightningFlash {
+            0% {
+                opacity: 1;
+                transform: scaleY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scaleY(1);
+            }
+        }
+        .lightning-trace {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+            border-radius: 1px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            animation: lightningTrace 1s ease-out forwards;
+        }
+        @keyframes lightningTrace {
+            0% {
+                opacity: 1;
+                transform: scaleY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scaleY(1);
+            }
+        }
+        #transition-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1008;
+            animation: fadeIn 0.5s ease-out;
+        }
+        #transition-text {
+            font-family: 'Bangers', cursive;
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(90deg, #ff00cc, #3333ff, #00ccff, #00ff99, #ffcc00, #ff3333);
+            background-size: 400% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s linear infinite, fadeOut 2s ease-out forwards;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        .neon-light {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bangers', cursive;
+            font-size: 64px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+            animation: flicker 1.5s infinite alternate;
+            display: none;
+            z-index: 1009;
+        }
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+                opacity: 0.5;
+            }
+        }
+        .light-bulb-break {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: url('https://i.imgur.com/light-bulb-break.png') no-repeat center center;
+            background-size: contain;
+            display: none;
+            z-index: 1010;
+            animation: bulbBreak 0.5s forwards;
+        }
+        @keyframes bulbBreak {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+        .flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none;
+            z-index: 1011;
+            animation: flash 0.3s forwards;
+        }
+        @keyframes flash {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .bubble {
+            position: absolute;
+            width: var(--particle-size);
+            height: var(--particle-size);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1003;
+            opacity: var(--particle-opacity);
+            animation: particleMove var(--particle-speed) linear forwards;
+            box-shadow: 0 0 10px var(--particle-color);
+            background-color: rgba(173, 216, 230, 0.7);
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .loading-screen {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1003;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .loading-content {
+            text-align: center;
+            color: var(--win-white);
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--win-blue);
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        /* New button style */
+        .new-tab-button {
+            background: var(--silver-gradient);
+            color: var(--win-white);
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-family: 'Minecraftia', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: var(--silver-shadow);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            margin-left: 10px;
+        }
+        .new-tab-button:hover {
+            background: linear-gradient(135deg, #B87333, #FFD700, #C0C0C0);
+            transform: translateY(-2px);
+            box-shadow: var(--silver-shadow-hover);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        .new-tab-button:active {
+            background: linear-gradient(135deg, #FFD700, #C0C0C0, #B87333);
+            transform: translateY(0);
+            box-shadow: var(--silver-shadow-active);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div id="loading-screen">
         <div id="loading-logo"></div>
         <div id="loading-text">Loading THE GOON LAGOON...</div>
@@ -1369,7 +1906,6 @@
         <div id="loading-status">Initializing components...</div>
         <div id="loading-animation"></div>
     </div>
-    <!-- Minecraft Start Menu -->
     <div id="minecraft-menu" style="display: none;">
         <h1 id="goon-lagoon-title">THE GOON LAGOON</h1>
         <div id="minecraft-phrase">Loading...</div>
@@ -1380,22 +1916,17 @@
             <button class="minecraft-button" id="exit-button">Exit</button>
         </div>
     </div>
-    <!-- Desktop -->
     <div id="desktop">
-        <!-- Game Icons will be added here dynamically -->
     </div>
-    <!-- Taskbar -->
     <div id="taskbar">
         <button id="start-button">Start</button>
         <div id="taskbar-items">
-            <!-- Taskbar items will be added here dynamically -->
         </div>
         <div id="system-tray">
             <div class="system-tray-item" id="search-button">🔍</div>
             <div class="system-tray-item" id="ai-chat-button">🤖</div>
         </div>
     </div>
-    <!-- Start Menu -->
     <div id="start-menu">
         <div id="start-menu-header">THE GOON LAGOON</div>
         <div id="start-menu-content">
@@ -1412,21 +1943,17 @@
             </div>
         </div>
     </div>
-    <!-- Search Bar -->
     <div id="search-bar">
         <input type="text" id="search-input" placeholder="Search for games...">
         <div id="search-results">
-            <!-- Search results will be added here dynamically -->
         </div>
     </div>
-    <!-- AI Chat Window -->
     <div id="ai-chat-window">
         <div id="ai-chat-header">
-            <span>AI Assistant</span>
+            <span>*AI Assistant</span>
             <div id="ai-chat-close" onclick="hideAIChat()">×</div>
         </div>
         <div id="ai-chat-content">
-            <!-- AI chat messages will be added here dynamically -->
         </div>
         <div id="ai-chat-input">
             <input id="ai-chat-textarea" type="text" placeholder="Type your message" />
@@ -1435,7 +1962,6 @@
             </button>
         </div>
     </div>
-    <!-- Settings Screen -->
     <div id="settings-screen">
         <div id="settings-window">
             <div id="settings-header">
@@ -1673,7 +2199,6 @@
             </div>
         </div>
     </div>
-    <!-- Credits Screen -->
     <div id="credits-screen">
         <div id="credits-window">
             <div id="credits-header">
@@ -1686,13 +2211,13 @@
                     <p>BarfbagX2 - Lead Developer</p>
                     <p>BarfbagX2 - UI Designer</p>
                     <p>LITHO - Content Creator</p>
-                    <p>BoogalooBunt - hes just there</p>
+                    <p>llamarider37 - idk hes just there</p>
                 </div>
                 <div class="credits-section">
                     <h2>Special Thanks</h2>
                     <p>To all the players who have supported the Goon Lagoon community.</p>
                     <p>Thanks to the goobers who whined about the old stuff not workng</p>
-                    <p>Special thanks to everyone, this fuck ass site was made out of boredom and you guys made it a much bigger thing then what it was intended for and will continue to expand and grow with your love and support so thank you all type shi no homo.</p>
+                    <p>Special thanks to everyone, this fuck ass site was made out of boredom and you guys made it a much bigger thing then what it was intended for and I will continue to expand and create with your love and support or sum so thank you all type shi no homo.</p>
                 </div>
                 <div class="credits-section">
                     <h2>Contact</h2>
@@ -1702,7 +2227,7 @@
                 </div>
                 <div class="credits-section">
                     <h2>Version Information</h2>
-                    <p>THE GOON LAGOON - Supa Dupa Edition</p>
+                    <p>The GOON LAGOON - Supa Dupa Edition</p>
                     <p>Version: 188.0.0</p>
                     <p>Build Date: March 2026</p>
                     <p>Copyright © 2026 BarfbagX2. All rights reserved.</p>
@@ -1710,37 +2235,30 @@
             </div>
         </div>
     </div>
-    <!-- Achievements Menu -->
     <div id="achievements-menu">
         <div id="achievements-header">
             <span>Achievements</span>
             <div id="achievements-close" onclick="hideAchievements()">×</div>
         </div>
         <div id="achievements-content">
-            <!-- Achievements will be added here dynamically -->
         </div>
     </div>
-    <!-- Leaderboard Menu -->
     <div id="leaderboard-menu">
         <div id="leaderboard-header">
             <span>Leaderboard</span>
             <div id="leaderboard-close" onclick="hideLeaderboard()">×</div>
         </div>
         <div id="leaderboard-content">
-            <!-- Leaderboard entries will be added here dynamically -->
         </div>
     </div>
-    <!-- Game Stats Menu -->
     <div id="game-stats-menu">
         <div id="game-stats-header">
             <span>Game Stats</span>
             <div id="game-stats-close" onclick="hideGameStats()">×</div>
         </div>
         <div id="game-stats-content">
-            <!-- Game stats will be added here dynamically -->
         </div>
     </div>
-    <!-- User Profile Screen -->
     <div id="user-profile-screen">
         <div id="user-profile-window">
             <div id="user-profile-header">
@@ -1814,9 +2332,9 @@
                     </div>
                 </div>
                 <div class="user-profile-section">
-                    <h2>Notification Settings</h2>
+                    <h2>User-Profile Settings</h2>
                     <div class="user-profile-option">
-                        <label for="email-notifications">Email Notifications:</label>
+                        <label for="email-notifications">Enable Notifications:</label>
                         <select id="email-notifications">
                             <option value="on">On</option>
                             <option value="off">Off</option>
@@ -1830,7 +2348,7 @@
                         </select>
                     </div>
                     <div class="user-profile-option">
-                        <label for="in-app-notifications">In-App Notifications:</label>
+                        <label for="in-app-notifications">In-Game Notifications:</label>
                         <select id="in-app-notifications">
                             <option value="on">On</option>
                             <option value="off">Off</option>
@@ -1847,7 +2365,6 @@
             </div>
         </div>
     </div>
-    <!-- Community Screen -->
     <div id="community-screen">
         <div id="community-window">
             <div id="community-header">
@@ -1858,7 +2375,6 @@
                 <div class="community-section">
                     <h2>Recent Posts</h2>
                     <div id="community-posts">
-                        <!-- Community posts will be added here dynamically -->
                     </div>
                 </div>
                 <div class="community-section">
@@ -1871,7 +2387,6 @@
             </div>
         </div>
     </div>
-    <!-- Analytics Screen -->
     <div id="analytics-screen">
         <div id="analytics-window">
             <div id="analytics-header">
@@ -1880,15 +2395,13 @@
             </div>
             <div id="analytics-content">
                 <div class="analytics-section">
-                    <h2>Game Playtime</h2>
+                    <h2>User Playtime</h2>
                     <div class="analytics-chart" id="game-playtime-chart">
-                        <!-- Game playtime chart will be added here dynamically -->
                     </div>
                 </div>
                 <div class="analytics-section">
                     <h2>Game Preferences</h2>
                     <div class="analytics-chart" id="game-preferences-chart">
-                        <!-- Game preferences chart will be added here dynamically -->
                     </div>
                 </div>
                 <div class="analytics-section">
@@ -1915,7 +2428,6 @@
             </div>
         </div>
     </div>
-    <!-- Exit Confirmation -->
     <div id="exit-confirmation">
         <h3>Are you sure you want to exit?</h3>
         <div id="exit-confirmation-buttons">
@@ -1923,71 +2435,119 @@
             <button onclick="hideExitConfirmation()">No</button>
         </div>
     </div>
+    <div id="lightning-effect"></div>
+    <div id="transition-overlay">
+        <div id="transition-text">BX2</div>
+    </div>
+    <div class="neon-light" id="neon-light">BarfbagX2</div>
+    <div class="light-bulb-break" id="light-bulb-break"></div>
+    <div class="flash" id="flash"></div>
     <script>
-        // Game data with actual images
         const games = [
             { id: 'vril-craft', name: 'Vril Craft', url: 'https://example.com/vril-craft', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=V' },
             { id: 'movies', name: 'Movies', url: 'https://example.com/movies', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
-            { id: 'slope-ball', name: 'Slope Ball', url: 'https://example.com/slope-ball', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'slope-nexus', name: 'Slope Nexus', url: 'https://example.com/slope-nexus', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'endless-runner', name: 'Endless Runner', url: 'https://example.com/endless-runner', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=E' },
-            { id: 'rocket-game', name: 'Rocket Game', url: 'https://example.com/rocket-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
-            { id: 'box-shooter', name: 'Box Shooter', url: 'https://example.com/box-shooter', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
-            { id: 'ghost-game', name: 'Ghost Game', url: 'https://example.com/ghost-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
-            { id: 'cave-explorer', name: 'Cave Explorer', url: 'https://example.com/cave-explorer', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
-            { id: 'titan-punk', name: 'Titan Punk', url: 'https://example.com/titan-punk', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=T' },
-            { id: 'mini-game', name: 'Mini Game', url: 'https://example.com/mini-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
-            { id: 'game-of-life', name: 'Game Of Life', url: 'https://example.com/game-of-life', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
-            { id: 'ultrakill', name: 'Ultrakill', url: 'https://example.com/ultrakill', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=U' },
-            { id: 'random-game', name: 'Random Game', url: 'https://example.com/random-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
-            { id: '2048-puzzle', name: '2048 Puzzle', url: 'https://example.com/2048-puzzle', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=2' },
-            { id: 'kopter', name: 'Kopter', url: 'https://example.com/kopter', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=K' },
-            { id: 'mario-bros', name: 'Mario Bros', url: 'https://example.com/mario-bros', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
-            { id: 'flip-exchange', name: 'Flip Exchange', url: 'https://example.com/flip-exchange', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
-            { id: 'solar-sim', name: 'Solar Sim', url: 'https://example.com/solar-sim', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'horror-3d', name: 'Horror 3D', url: 'https://example.com/horror-3d', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=H' },
-            { id: 'subway-surfers', name: 'Subway Surfers', url: 'https://example.com/subway-surfers', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'run-3', name: 'Run 3', url: 'https://example.com/run-3', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
-            { id: 'drift-boss', name: 'Drift Boss', url: 'https://example.com/drift-boss', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
-            { id: 'chaos-proxy', name: 'Chaos Proxy', url: 'https://example.com/chaos-proxy', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
-            { id: 'drag-racer', name: 'Drag Racer', url: 'https://example.com/drag-racer', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
-            { id: 'retro-bowl', name: 'Retro Bowl', url: 'https://example.com/retro-bowl', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
-            { id: 'nzp', name: 'NZP', url: 'https://example.com/nzp', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=N' },
-            { id: 'black-ops-zombies', name: 'Black Ops Zombies', url: 'https://example.com/black-ops-zombies', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
-            { id: 'fnad', name: 'FNAD', url: 'https://example.com/fnad', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
-            { id: 'worlds-hardest-game', name: 'World\'s Hardest Game', url: 'https://example.com/worlds-hardest-game', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=W' },
-            { id: 'temple-run-2', name: 'Temple Run 2', url: 'https://example.com/temple-run-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=T' },
-            { id: 'fruit-ninja', name: 'Fruit Ninja', url: 'https://example.com/fruit-ninja', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
-            { id: 'paper-io-2', name: 'Paper.io 2', url: 'https://example.com/paper-io-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' },
-            { id: 'crossy-road', name: 'Crossy Road', url: 'https://example.com/crossy-road', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
-            { id: 'geometry-dash', name: 'Geometry Dash', url: 'https://example.com/geometry-dash', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
-            { id: 'aaronos', name: 'AaronOS', url: 'https://example.com/aaronos', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=A' },
-            { id: 'niche-ai', name: 'Niche AI', url: 'https://example.com/niche-ai', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=N' },
-            { id: 'spiral-roll', name: 'Spiral Roll', url: 'https://example.com/spiral-roll', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'funny-shooter-2', name: 'Funny Shooter 2', url: 'https://example.com/funny-shooter-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
-            { id: 'grow-a-garden', name: 'Grow a Garden', url: 'https://example.com/grow-a-garden', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
-            { id: 'contra-3', name: 'Contra 3', url: 'https://example.com/contra-3', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
-            { id: 'clash-royale', name: 'Clash Royale', url: 'https://example.com/clash-royale', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
-            { id: 'karlson-demo', name: 'Karlson Demo', url: 'https://example.com/karlson-demo', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=K' },
-            { id: 'steal-a-brainrot-2', name: 'Steal a Brainrot 2', url: 'https://example.com/steal-a-brainrot-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'superhot', name: 'Superhot', url: 'https://example.com/superhot', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
-            { id: 'emulator-test-v1', name: 'Emulator Test V1', url: 'https://example.com/emulator-test-v1', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=E' },
-            { id: '1v1-lol', name: '1v1 Lol', url: 'https://example.com/1v1-lol', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=1' },
-            { id: 'doki-doki-lit-club', name: 'Doki Doki Lit Club', url: 'https://example.com/doki-doki-lit-club', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
-            { id: 'quake-3-arena', name: 'Quake 3 Arena', url: 'https://example.com/quake-3-arena', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=Q' },
-            { id: 'basket-random', name: 'Basket Random', url: 'https://example.com/basket-random', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
-            { id: 'geometry-dash-2', name: 'Geometry Dash', url: 'https://example.com/geometry-dash-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
-            { id: 'punch-out', name: 'Punch Out', url: 'https://example.com/punch-out', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' },
-            { id: 'lego-batman', name: 'Lego Batman', url: 'https://example.com/lego-batman', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=L' },
-            { id: 'instagram-reels', name: 'Instagram Reels', url: 'https://example.com/instagram-reels', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=I' },
-            { id: 'bullet-force', name: 'Bullet Force', url: 'https://example.com/bullet-force', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
-            { id: 'fallout', name: 'Fallout', url: 'https://example.com/fallout', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
-            { id: 'osu', name: 'OSU!', url: 'https://example.com/osu', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=O' },
-            { id: 'rivals', name: 'Rivals', url: 'https://example.com/rivals', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
-            { id: 'fnad-2', name: 'FNAD', url: 'https://example.com/fnad-2', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
-            { id: 'obby-bike', name: 'Obby Bike', url: 'https://example.com/obby-bike', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=O' },
-            { id: 'gfnae', name: 'GFNAE', url: 'https://example.com/gfnae', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
-            { id: 'pvz-fusion', name: 'PVZ Fusion', url: 'https://example.com/pvz-fusion', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' }
+            { id: 'slope-ball', name: 'Slope Ball', url: 'https://mathiasgredal.github.io/Slope-Game/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'slope-nexus', name: 'Slope Nexus', url: 'https://slopenexus.github.io/games/v7/index.html', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'endless-runner', name: 'Endless Runner', url: 'https://nickidebruyn.github.io/unity/endlessrunner/index.html', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=E' },
+            { id: 'rocket-game', name: 'Rocket Game', url: 'https://lance60.github.io/RocketGameWebGL/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'box-shooter', name: 'Box Shooter', url: 'https://romxz.github.io/Unity3D_BoxShooter_WebGL/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
+            // { id: 'ghost-game', name: 'Ghost Game', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            // { id: 'cave-explorer', name: 'Cave Explorer', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'titan-punk', name: 'Titan Punk', url: 'https://slimramgames.github.io/Titan/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=T' },
+            { id: 'mini-game', name: 'Mini Game', url: 'https://curtinhive.github.io/BPSGame/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
+            // { id: 'game-of-life', name: 'Game Of Life', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'ultrakill', name: 'Ultrakill', url: 'https://149004934-bit.github.io/BarfbagX2UltrakillGame.github.io/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=U' },
+            // { id: 'random-game', name: 'Random Game', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            // { id: '2048-puzzle', name: '2048 Puzzle', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=2' },
+            { id: 'kopter', name: 'Kopter', url: 'https://thomaschampagne.github.io/kopter/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=K' },
+            { id: 'mario-bros', name: 'Mario Bros', url: 'https://winstonshields.github.io/Games/Mario/index.html', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=M' },
+            { id: 'flip-exchange', name: 'Flip Exchange', url: 'https://flipexchange.github.io/?scrlybrkr=85b19b5a', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'solar-sim', name: 'Solar Sim', url: 'https://q-ro.github.io/Solar-system-unity/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'horror-3d', name: 'Horror 3D', url: 'https://adazhou2007.github.io/3D-horror-web-version/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=H' },
+            { id: 'subway-surfers', name: 'Subway Surfers', url: 'https://gertdoro.github.io/3hg7dj3bnc82/index.html', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'run-3', name: 'Run 3', url: 'https://linh879.github.io/run333/tn6pS9dCf37xAhkJv/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'drift-boss', name: 'Drift Boss', url: 'https://centeredu20.github.io/g5/class-472/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
+            // { id: 'chaos-proxy', name: 'Chaos Proxy', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            // { id: 'drag-racer', name: 'Drag Racer', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=D' },
+            { id: 'retro-bowl', name: 'Retro Bowl', url: 'broken', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=R' },
+            { id: 'nzp', name: 'NZP', url: 'https://centeredu20.github.io/g97/class-470/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=N' },
+            { id: 'black-ops-zombies', name: 'Black Ops Zombies', url: 'https://centeredu20.github.io/g97/class-470/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=B' },
+            // { id: 'worlds-hardest-game', name: 'World\'s Hardest Game', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=W' },
+            // { id: 'temple-run-2', name: 'Temple Run 2', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=T' },
+            { id: 'fruit-ninja', name: 'Fruit Ninja', url: 'https://bitstore1612.github.io/g50/class-22/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=F' },
+            { id: 'paper-io-2', name: 'Paper.io 2', url: 'https://bitstore1612.github.io/g/class-505/', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=P' },
+            { id: 'crossy-road', name: 'Crossy Road', url: 'blocked', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=C' },
+            { id: 'fireboy-and-watergirl', name: 'Fireboy and Watergirl', url: 'https://bitstore1612.github.io/g177/class-346', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=G' },
+            { id: 'aaronos', name: 'AaronOS', url: 'https://aaronos.dev/AaronOS/aosBeta.php ', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=A' },
+            { id: 'niche-ai', name: 'Niche AI', url: 'https://demo.tabbyml.com/ ', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=N' },
+            { id: 'spiral-roll', name: 'Spiral Roll', url: 'https://spiralroll.h5games.usercontent.goog/v/5be6bbdd-7a11-43b1-9860-e3fc44859f25/ ', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=S' },
+            { id: 'funny-shooter-2', name: 'Funny Shooter 2', url: 'https://barfbagx2.github.io/barfbagx2sfunnyshooter2.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sfunnyshooter2.github.io/favicon.ico' },
+            { id: 'grow-a-garden', name: 'Grow a Garden', url: 'https://barfbagx2.github.io/barfbagx2sgrowagarden.github.io/ ', icon: 'https://barfbagx2.github.io/barfbagx2sgrowagarden.github.io/favicon.ico' },
+            { id: 'contra-3', name: 'Contra 3', url: 'https://barfbagx2.github.io/barfbagx2scontra3.github.io/ ', icon: 'https://barfbagx2.github.io/barfbagx2scontra3.github.io/favicon.ico' },
+            { id: 'clash-royale', name: 'Clash Royale', url: 'https://barfbagx2.github.io/barfbagx2sclashroyale.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sclashroyale.github.io/favicon.ico' },
+            { id: 'karlson-demo', name: 'Karlson Demo', url: 'https://barfbagx2.github.io/barfbagx2skarlsondemo.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2skarlsondemo.github.io/favicon.ico' },
+            { id: 'steal-a-brainrot-2', name: 'Steal a Brainrot 2', url: 'https://149004934-bit.github.io/barfbagx2sstealabrainrot2.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sstealabrainrot2.github.io/favicon.ico' },
+            { id: 'superhot', name: 'Superhot', url: 'https://149004934-bit.github.io/barfbagx2ssuperhot.github.io/ ', icon: 'https://149004934-bit.github.io/barfbagx2ssuperhot.github.io/favicon.ico' },
+            { id: 'emulator-test-v1', name: 'Emulator Test V1', url: 'https://149004934-bit.github.io/emulatortestv1/', icon: 'https://149004934-bit.github.io/emulatortestv1/favicon.ico' },
+            { id: '1v1-lol', name: '1v1 Lol', url: 'https://149004934-bit.github.io/barfbagx2s1v1lol.github.com/', icon: 'https://149004934-bit.github.io/barfbagx2s1v1lol.github.com/favicon.ico' },
+            { id: 'doki-doki-lit-club', name: 'Doki Doki Lit Club', url: 'https://149004934-bit.github.io/barfbagx2sdokidokilitclub.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sdokidokilitclub.github.io/favicon.ico' },
+            { id: 'quake-3-arena', name: 'Quake 3 Arena', url: 'https://149004934-bit.github.io/barfbagx2squake3arena.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2squake3arena.github.io/favicon.ico' },
+            { id: 'basket-random', name: 'Basket Random', url: 'https://149004934-bit.github.io/barfbagx2sbasketrandom.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sbasketrandom.github.io/favicon.ico' },
+            { id: 'geometry-dash-2', name: 'Geometry Dash', url: 'https://149004934-bit.github.io/barfbagx2sgeometrydash.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sgeometrydash.github.io/favicon.ico' },
+            { id: 'punch-out', name: 'Punch Out', url: 'https://149004934-bit.github.io/barfbagx2spunchout.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2spunchout.github.io/favicon.ico' },
+            { id: 'lego-batman', name: 'Lego Batman', url: 'https://149004934-bit.github.io/barfbagx2slegobatman.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2slegobatman.github.io/favicon.ico' },
+            { id: 'instagram-reels', name: 'Instagram Reels', url: 'testing', icon: 'https://via.placeholder.com/48/0078d7/ffffff?text=I' },
+            { id: 'bullet-force', name: 'Bullet Force', url: 'https://149004934-bit.github.io/barfbagx2sbulletforce.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sbulletforce.github.io/favicon.ico' },
+            { id: 'fallout', name: 'Fallout', url: 'https://149004934-bit.github.io/barfbagx2sfallout.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sfallout.github.io/favicon.ico' },
+            { id: 'osu', name: 'OSU!', url: 'https://github.com/149004934-bit/barfbagx2sosu.github.io/settings/pages', icon: 'https://github.com/149004934-bit/barfbagx2sosu.github.io/favicon.ico' },
+            { id: 'rivals', name: 'Rivals', url: 'https://barfbagx2.github.io/barfbagx2srivals.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2srivals.github.io/favicon.ico' },
+            { id: 'fnad-2', name: 'FNAD', url: 'https://barfbagx2.github.io/barfbagx2sfnad.github.io/ ', icon: 'https://barfbagx2.github.io/barfbagx2sfnad.github.io/favicon.ico' },
+            { id: 'obby-bike', name: 'Obby Bike', url: 'https://barfbagx2.github.io/barfbagx2sobbybutyouronabike.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sobbybutyouronabike.github.io/favicon.ico' },
+            { id: 'fnae', name: 'FNAE', url: 'https://barfbagx2.github.io/barfbagx2sgfnae.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sgfnae.github.io/favicon.ico' },
+            { id: 'pvz-fusion', name: 'PVZ Fusion', url: 'https://barfbagx2.github.io/barfbagx2spvzfusion.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2spvzfusion.github.io/favicon.ico' },
+            { id: 'awesometanks', name: 'Awesome Tanks', url: 'https://149004934-bit.github.io/barfbagx2sawesometanks.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sawesometanks.github.io/favicon.ico' },
+            { id: 'awesometanks2', name: 'Awesome Tanks 2', url: 'https://149004934-bit.github.io/barfbagx2sawesometanks2.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sawesometanks2.github.io/favicon.ico' },
+            { id: 'prismclient', name: 'Prism Client', url: 'https://149004934-bit.github.io/barfbagx2sprismclient.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sprismclient.github.io/favicon.ico' },
+            { id: '99nightsintheforest', name: '99 Nights in the Forest', url: 'https://149004934-bit.github.io/barfbagx2s99nightsintheforest.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2s99nightsintheforest.github.io/favicon.ico' },
+            { id: 'peggle', name: 'Peggle', url: 'https://barfbagx2.github.io/barfbagx2speggle.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2speggle.github.io/favicon.ico' },
+            { id: 'stien-clicker', name: 'Stien Clicker', url: 'https://barfbagx2.github.io/barfbagx2sstienclicker.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sstienclicker.github.io/favicon.ico' },
+            { id: '2v2', name: '2v2', url: 'https://barfbagx2.github.io/barfbagx2s2v2io.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2s2v2io.github.io/favicon.ico' },
+            { id: 'rocket-league', name: 'Rocket League', url: 'https://barfbagx2.github.io/barfbagx2srocketleague.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2srocketleague.github.io/favicon.ico' },
+            { id: 'among-us', name: 'Among Us', url: 'https://149004934-bit.github.io/barfbagx2samongus.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2samongus.github.io/favicon.ico' },
+            { id: 'buckshot-roulette', name: 'Buckshot Roulette', url: 'https://149004934-bit.github.io/barfbagx2sbuckshotroulette.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sbuckshotroulette.github.io/favicon.ico' },
+            { id: 'narrow-one', name: 'Narrow One', url: 'https://149004934-bit.github.io/barfbagx2snarrowone.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2snarrowone.github.io/favicon.ico' },
+            { id: 'repo', name: 'REPO', url: 'https://149004934-bit.github.io/barfbagx2sREPO.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sREPO.github.io/favicon.ico' },
+            { id: 'hungry-shark', name: 'Hungry Shark', url: 'https://149004934-bit.github.io/barfbagx2shungryshark.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2shungryshark.github.io/favicon.ico' },
+            { id: 'rocket-league', name: 'Rocket League', url: 'https://barfbagx2.github.io/barfbagx2srocketleague.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2srocketleague.github.io/favicon.ico' },
+            { id: 'funny-shooter-2', name: 'Funny Shooter 2', url: 'https://barfbagx2.github.io/barfbagx2sfunnyshooter2.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sfunnyshooter2.github.io/favicon.ico' },
+            { id: 'grow-a-garden', name: 'Grow a Garden', url: 'https://barfbagx2.github.io/barfbagx2sgrowagarden.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sgrowagarden.github.io/favicon.ico' },
+            { id: 'contra-3', name: 'Contra 3', url: 'https://barfbagx2.github.io/barfbagx2scontra3.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2scontra3.github.io/favicon.ico' },
+            { id: 'clash-royale', name: 'Clash Royale', url: 'https://barfbagx2.github.io/barfbagx2sclashroyale.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sclashroyale.github.io/favicon.ico' },
+            { id: 'karlson-demo', name: 'Karlson Demo', url: 'https://barfbagx2.github.io/barfbagx2skarlsondemo.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2skarlsondemo.github.io/favicon.ico' },
+            { id: 'steal-a-brainrot-2', name: 'Steal a Brainrot 2', url: 'https://149004934-bit.github.io/barfbagx2sstealabrainrot2.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sstealabrainrot2.github.io/favicon.ico' },
+            { id: 'superhot', name: 'Superhot', url: 'https://149004934-bit.github.io/barfbagx2ssuperhot.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2ssuperhot.github.io/favicon.ico' },
+            { id: 'emulator-test-v1', name: 'Emulator Test V1', url: 'https://149004934-bit.github.io/emulatortestv1/', icon: 'https://149004934-bit.github.io/emulatortestv1/favicon.ico' },
+            { id: '1v1-lol', name: '1v1 Lol', url: 'https://149004934-bit.github.io/barfbagx2s1v1lol.github.com/', icon: 'https://149004934-bit.github.io/barfbagx2s1v1lol.github.com/favicon.ico' },
+            { id: 'doki-doki-lit-club', name: 'Doki Doki Lit Club', url: 'https://149004934-bit.github.io/barfbagx2sdokidokilitclub.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sdokidokilitclub.github.io/favicon.ico' },
+            { id: 'quake-3-arena', name: 'Quake 3 Arena', url: 'https://149004934-bit.github.io/barfbagx2squake3arena.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2squake3arena.github.io/favicon.ico' },
+            { id: 'basket-random', name: 'Basket Random', url: 'https://149004934-bit.github.io/barfbagx2sbasketrandom.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sbasketrandom.github.io/favicon.ico' },
+            { id: 'geometry-dash-2', name: 'Geometry Dash', url: 'https://149004934-bit.github.io/barfbagx2sgeometrydash.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sgeometrydash.github.io/favicon.ico' },
+            { id: 'punch-out', name: 'Punch Out', url: 'https://149004934-bit.github.io/barfbagx2spunchout.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2spunchout.github.io/favicon.ico' },
+            { id: 'lego-batman', name: 'Lego Batman', url: 'https://149004934-bit.github.io/barfbagx2slegobatman.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2slegobatman.github.io/favicon.ico' },
+            { id: 'bullet-force', name: 'Bullet Force', url: 'https://149004934-bit.github.io/barfbagx2sbulletforce.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sbulletforce.github.io/favicon.ico' },
+            { id: 'fallout', name: 'Fallout', url: 'https://149004934-bit.github.io/barfbagx2sfallout.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sfallout.github.io/favicon.ico' },
+            { id: 'osu', name: 'OSU!', url: 'https://github.com/149004934-bit/barfbagx2sosu.github.io/settings/pages', icon: 'https://github.com/149004934-bit/barfbagx2sosu.github.io/favicon.ico' },
+            { id: 'rivals', name: 'Rivals', url: 'https://barfbagx2.github.io/barfbagx2srivals.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2srivals.github.io/favicon.ico' },
+            { id: 'fnad-2', name: 'FNAD', url: 'https://barfbagx2.github.io/barfbagx2sfnad.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sfnad.github.io/favicon.ico' },
+            { id: 'obby-bike', name: 'Obby Bike', url: 'https://barfbagx2.github.io/barfbagx2sobbybutyouronabike.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sobbybutyouronabike.github.io/favicon.ico' },
+            { id: 'fnae', name: 'FNAE', url: 'https://barfbagx2.github.io/barfbagx2sgfnae.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2sgfnae.github.io/favicon.ico' },
+            { id: 'pvz-fusion', name: 'PVZ Fusion', url: 'https://barfbagx2.github.io/barfbagx2spvzfusion.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2spvzfusion.github.io/favicon.ico' },
+            { id: 'awesometanks', name: 'Awesome Tanks', url: 'https://149004934-bit.github.io/barfbagx2sawesometanks.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sawesometanks.github.io/favicon.ico' },
+            { id: 'awesometanks2', name: 'Awesome Tanks 2', url: 'https://149004934-bit.github.io/barfbagx2sawesometanks2.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sawesometanks2.github.io/favicon.ico' },
+            { id: 'prismclient', name: 'Prism Client', url: 'https://149004934-bit.github.io/barfbagx2sprismclient.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2sprismclient.github.io/favicon.ico' },
+            { id: '99nightsintheforest', name: '99 Nights in the Forest', url: 'https://149004934-bit.github.io/barfbagx2s99nightsintheforest.github.io/', icon: 'https://149004934-bit.github.io/barfbagx2s99nightsintheforest.github.io/favicon.ico' },
+            { id: 'peggle', name: 'Peggle', url: 'https://barfbagx2.github.io/barfbagx2speggle.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2speggle.github.io/favicon.ico' },
+            { id: 'bedwars', name: 'Bedwars', url: 'https://barfbagx2.github.io/barfbagx2sbedwars.github.io/', icon: 'https://barfbagx2.github.io/barfbagx2speggle.github.io/favicon.ico' }
         ];
         // Minecraft-style loading phrases
         const minecraftPhrases = [
@@ -2093,7 +2653,7 @@
                 gameIcon.style.left = `${x}px`;
                 gameIcon.style.top = `${y}px`;
                 gameIcon.dataset.gameId = game.id;
-                // Use a placeholder image if the game icon fails to load
+                // Use the actual game icon if available
                 gameIcon.innerHTML = `
                     <img src="${game.icon}" alt="${game.name}" onerror="this.src='https://via.placeholder.com/48/0078d7/ffffff?text=${encodeURIComponent(game.name.substring(0, 1))}'; this.onerror=null;">
                     <span>${game.name}</span>
@@ -2107,7 +2667,7 @@
             document.getElementById('search-button').addEventListener('click', toggleSearchBar);
             document.getElementById('ai-chat-button').addEventListener('click', toggleAIChat);
             // Add event listeners for Minecraft menu buttons
-            document.getElementById('start-game').addEventListener('click', startGame);
+            document.getElementById('start-game').addEventListener('click', startGameTransition);
             document.getElementById('settings-button').addEventListener('click', (e) => {
                 e.stopPropagation();
                 showSettingsFromMenu();
@@ -2243,9 +2803,9 @@
                 if (!message) return;
                 displayMessage(message, true);
                 chatInput.value = '';
-                const apiUrl = message.startsWith('/image') ?
-                    'https://backend.buildpicoapps.com/aero/run/image-generation-api?pk=v1-Z0FBQUFBQm5HUEtMSjJkakVjcF9IQ0M0VFhRQ0FmSnNDSHNYTlJSblE0UXo1Q3RBcjFPcl9YYy1OZUhteDZWekxHdWRLM1M1alNZTkJMWEhNOWd4S1NPSDBTWC12M0U2UGc9PQ==' :
-                    'https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm5HUEtMSjJkakVjcF9IQ0M0VFhRQ0FmSnNDSHNYTlJSblE0UXo1Q3RBcjFPcl9YYy1OZUhteDZWekxHdWRLM1M1alNZTkJMWEhNOWd4S1NPSDBTWC12M0U2UGc9PQ==';
+                const apiUrl = message.startsWith('/image')
+                    ? 'https://backend.buildpicoapps.com/aero/run/image-generation-api?pk=v1-Z0FBQUFBQm5HUEtMSjJkakVjcF9IQ0M0VFhRQ0FmSnNDSHNYTlJSblE0UXo1Q3RBcjFPcl9YYy1OZUhteDZWekxHdWRLM1M1alNZTkJMWEhNOWd4S1NPSDBTWC12M0U2UGc9PQ=='
+                    : 'https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm5HUEtMSjJkakVjcF9IQ0M0VFhRQ0FmSnNDSHNYTlJSblE0UXo1Q3RBcjFPcl9YYy1OZUhteDZWekxHdWRLM1M1alNZTkJMWEhNOWd4S1NPSDBTWC12M0U2UGc9PQ==';
                 try {
                     const data = await callApi(apiUrl, message);
                     if (data.status === 'success') {
@@ -2264,11 +2824,11 @@
             const achievementsContent = document.getElementById('achievements-content');
             // Sample achievements data
             const achievements = [
-                { title: 'First Steps', description: 'Complete your first game.', icon: '🏆' },
+                { title: 'First Steps', description: 'Play your first game.', icon: '🏆' },
                 { title: 'Explorer', description: 'Play 10 different games.', icon: '🌍' },
                 { title: 'Master', description: 'Achieve a high score in a game.', icon: '🏅' },
                 { title: 'Collector', description: 'Collect all game achievements.', icon: '🎁' },
-                { title: 'Speedrunner', description: 'Complete a game in record time.', icon: '⏱️' }
+                { title: 'Speedrunner', description: 'Complete a game in under 60 seconcds.', icon: '⏱️' }
             ];
             // Display achievements
             achievements.forEach(achievement => {
@@ -2438,6 +2998,10 @@
                 } else {
                     loadingStatus.textContent = "Finalizing setup...";
                 }
+                // Create bubbles effect based on loading progress
+                if (progress < 100) {
+                    createBubblesEffect(progress);
+                }
                 if (progress >= 100) {
                     clearInterval(loadingInterval);
                     setTimeout(() => {
@@ -2446,6 +3010,72 @@
                     }, 500);
                 }
             }, 200);
+        }
+        // Create bubbles effect based on loading progress
+        function createBubblesEffect(progress) {
+            const numBubbles = Math.floor(progress / 2);
+            const loadingAnimation = document.getElementById('loading-animation');
+            // Clear existing bubbles
+            const existingBubbles = document.querySelectorAll('.bubble');
+            existingBubbles.forEach(bubble => bubble.remove());
+            // Create new bubbles
+            for (let i = 0; i < numBubbles; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                // Random position at the bottom of the screen
+                const x = Math.random() * window.innerWidth;
+                const y = window.innerHeight + 10;
+                bubble.style.left = `${x}px`;
+                bubble.style.top = `${y}px`;
+                // Random size
+                const size = 5 + Math.random() * 10;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                // Random color (light blue)
+                bubble.style.backgroundColor = `rgba(173, 216, 230, ${Math.random() * 0.5 + 0.5})`;
+                // Animation properties based on loading progress
+                const duration = 5 + Math.random() * 10;
+                const delay = Math.random() * 5;
+                const tx = (Math.random() - 0.5) * 50;
+                const ty = -100 - Math.random() * 500;
+                bubble.style.setProperty('--tx', tx);
+                bubble.style.setProperty('--ty', ty);
+                // Adjust spin speed based on loading progress
+                const spinSpeed = 1 + (progress / 100) * 5;
+                bubble.style.animation = `particleMove ${duration}s ${delay}s ease-out forwards, spin ${spinSpeed}s linear infinite`;
+                loadingAnimation.appendChild(bubble);
+                // Remove bubble after animation
+                setTimeout(() => {
+                    bubble.remove();
+                }, (duration + delay) * 1000);
+            }
+        }
+        // Start the game with transition effect
+        function startGameTransition() {
+            // Hide the minecraft menu
+            document.getElementById('minecraft-menu').style.display = 'none';
+            // Show the neon light sign
+            const neonLight = document.getElementById('neon-light');
+            neonLight.style.display = 'block';
+            // After 3 seconds, show the bulb break effect and flash
+            setTimeout(() => {
+                // Hide the neon light
+                neonLight.style.display = 'none';
+                // Show the bulb break effect
+                const bulbBreak = document.getElementById('light-bulb-break');
+                bulbBreak.style.display = 'block';
+                // Show the flash effect
+                const flash = document.getElementById('flash');
+                flash.style.display = 'block';
+                // After the animation completes, hide everything and show the desktop
+                setTimeout(() => {
+                    bulbBreak.style.display = 'none';
+                    flash.style.display = 'none';
+                    // Show the desktop
+                    document.getElementById('desktop').style.display = 'block';
+                    document.getElementById('taskbar').style.display = 'flex';
+                }, 500);
+            }, 3000);
         }
         // Start the game (show desktop)
         function startGame() {
@@ -2549,27 +3179,9 @@
             communityPostsContainer.innerHTML = '';
             // Sample community posts data
             const samplePosts = [
-                {
-                    user: 'Player1',
-                    time: '2 hours ago',
-                    content: 'Just finished the new level in Geometry Dash! It was so hard but so satisfying when I finally beat it!',
-                    likes: 15,
-                    comments: 3
-                },
-                {
-                    user: 'Player2',
-                    time: '5 hours ago',
-                    content: 'Anyone else playing Rivals right now? I need a team for the next match!',
-                    likes: 8,
-                    comments: 2
-                },
-                {
-                    user: 'Player3',
-                    time: '1 day ago',
-                    content: 'I just discovered this amazing game called "Ultrakill" and I\'m obsessed. The graphics and gameplay are next level!',
-                    likes: 22,
-                    comments: 5
-                }
+                { user: 'LadiesMan217', time: '2 hours ago', content: 'im lowkirky gay asf', likes: 15, comments: 3 },
+                { user: 'NoobMaster69', time: '5 hours ago', content: 'Anyone else playing Rivals right now? I need a team for the next match.', likes: 8, comments: 2 },
+                { user: 'BarfbagX2', time: '1 day ago', content: 'gforce now emulator coming soon trust', likes: 22, comments: 5 }
             ];
             // Display community posts
             samplePosts.forEach(post => {
@@ -2617,9 +3229,9 @@
             // Sample analytics data
             const analyticsData = {
                 totalGamesPlayed: 42,
-                totalPlaytime: 12.5,
+                totalPlaytime: 122.5,
                 favoriteGame: 'Geometry Dash',
-                mostPlayedGame: 'Rivals'
+                mostPlayedGame: 'Ultrakill'
             };
             // Update analytics display
             document.getElementById('total-games-played').textContent = analyticsData.totalGamesPlayed;
@@ -2647,9 +3259,21 @@
             windowHeader.innerHTML = `
                 <span class="window-title">${game.name}</span>
                 <div class="window-controls">
+                    <div class="window-control window-control-refresh">↻</div>
                     <div class="window-control window-control-minimize">-</div>
                     <div class="window-control window-control-maximize">+</div>
                     <div class="window-control window-control-close">×</div>
+                    <button class="new-tab-button" onclick="openGameInNewTab('${game.url}')">Open in New Tab</button>
+                </div>
+            `;
+            // Create loading screen
+            const loadingScreen = document.createElement('div');
+            loadingScreen.className = 'loading-screen';
+            loadingScreen.innerHTML = `
+                <div class="loading-content">
+                    <h2>Starting ${game.name}</h2>
+                    <p>Loading game assets, please wait...</p>
+                    <div class="loading-spinner"></div>
                 </div>
             `;
             // Create window content
@@ -2659,6 +3283,9 @@
             iframe.className = 'window-iframe';
             iframe.src = game.url;
             iframe.allowFullscreen = true;
+            iframe.style.display = 'none'; // Hide iframe initially
+            // Add loading screen and iframe to window content
+            windowContent.appendChild(loadingScreen);
             windowContent.appendChild(iframe);
             // Assemble the window
             windowElement.appendChild(windowHeader);
@@ -2678,20 +3305,41 @@
             // Add to taskbar
             addToTaskbar(game);
             // Add event listeners for window controls
+            const refreshButton = windowHeader.querySelector('.window-control-refresh');
             const minimizeButton = windowHeader.querySelector('.window-control-minimize');
             const maximizeButton = windowHeader.querySelector('.window-control-maximize');
             const closeButton = windowHeader.querySelector('.window-control-close');
+            refreshButton.addEventListener('click', () => refreshGame(windowId));
             minimizeButton.addEventListener('click', () => minimizeWindow(windowId));
             maximizeButton.addEventListener('click', () => maximizeWindow(windowId));
             closeButton.addEventListener('click', () => closeWindow(windowId));
             // Show the window
             windowElement.style.display = 'flex';
+            // Simulate loading delay
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                iframe.style.display = 'block';
+            }, 3000); // 3 seconds delay
             // Create particle effect
             createParticleEffect(windowElement);
             // Simulate game stats update (in a real app, this would be based on actual game events)
             const score = Math.floor(Math.random() * 1000) + 1;
             const isWin = Math.random() > 0.5;
             updateGameStats(game.id, score, isWin);
+        }
+        // Open game in a new tab
+        function openGameInNewTab(url) {
+            window.open(url, '_blank');
+        }
+        // Refresh game iframe
+        function refreshGame(windowId) {
+            const windowObj = windows.find(w => w.id === windowId);
+            if (windowObj) {
+                const iframe = windowObj.element.querySelector('.window-iframe');
+                if (iframe) {
+                    iframe.src = iframe.src; // Reload the iframe
+                }
+            }
         }
         // Bring window to front
         function bringToFront(windowId) {
@@ -3610,4 +4258,3 @@
     </script>
 </body>
 </html>
-
