@@ -3259,11 +3259,11 @@
             windowHeader.innerHTML = `
                 <span class="window-title">${game.name}</span>
                 <div class="window-controls">
+                    <button class="new-tab-button" onclick="openGameInNewTab('${game.url}')">Open in New Tab</button>
                     <div class="window-control window-control-refresh">↻</div>
                     <div class="window-control window-control-minimize">-</div>
                     <div class="window-control window-control-maximize">+</div>
                     <div class="window-control window-control-close">×</div>
-                    <button class="new-tab-button" onclick="openGameInNewTab('${game.url}')">Open in New Tab</button>
                 </div>
             `;
             // Create loading screen
